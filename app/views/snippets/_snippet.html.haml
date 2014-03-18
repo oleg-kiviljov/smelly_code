@@ -1,0 +1,54 @@
+// Use decorator methods for snippet
+- decorated_snippet = snippet.decorate
+.snippet.well
+  .row
+    .col-sm-12.header
+      %table
+        %tbody
+          %tr
+            %td
+              %span.label.label-primary
+                = "#{time_ago_in_words(snippet.created_at)} ago"
+            %td
+              %span.author
+                %i.fa.fa-user
+                %strong
+                = snippet.user.username
+            %td
+              %span.language
+                %strong
+                  = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
+      %hr.small
+    .col-sm-12
+      %h3
+        = snippet.title
+    .col-sm-12
+      %p
+        = snippet.description
+    %div{class: ((decorated_snippet.solved?) ? 'col-sm-6' : 'col-sm-12')}
+      .smelly-code
+        .panel.panel-danger
+          .panel-heading
+            %h3.panel-title.clearfix
+              %span.pull-left
+                Smelly code
+              %i.fa.fa-ban.pull-right
+          .panel-body
+            = raw decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)
+    - if decorated_snippet.solved?
+      .col-sm-6
+        .clean-code
+          .panel.panel-success
+            .panel-heading
+              %h3.panel-title.clearfix
+                %span.pull-left
+                  Clean code
+                %i.fa.fa-check.pull-right
+            .panel-body
+              = snippet.clean_body
+    .col-sm-12
+      .footer
+        = decorated_snippet.button
+
+
+

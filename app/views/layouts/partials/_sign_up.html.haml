@@ -1,0 +1,25 @@
+#sign-up.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "sign-up", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}
+          %i.fa.fa-times
+        %h3.modal-title
+          Sign up now to get your code rid of its smell!
+      .modal-body
+        = form_for(User.new, url: user_registration_path(User.new)) do |f|
+          .form-group
+            = f.label :username, "Username".html_safe, class: 'control-label'
+            = f.text_field :username, class: 'form-control input-lg'
+          .form-group
+            = f.label :email, "Email".html_safe, class: 'control-label'
+            = f.email_field :email, class: 'form-control input-lg'
+          .form-group
+            = f.label :password, "Password".html_safe, class: 'control-label'
+            = f.password_field :password, class: 'form-control input-lg', id: 'user-password'
+          .form-group
+            = f.label :password_confirmation, "Password confirmation".html_safe, class: 'control-label'
+            = f.password_field :password_confirmation, class: 'form-control input-lg'
+          .form-group
+            = f.submit 'Sign Up', class: 'btn btn-primary btn-block'
+

@@ -1,0 +1,14 @@
+!!! 5
+%html{lang: 'en'}
+  = render 'layouts/partials/head'
+  %body
+    - if user_signed_in?
+      = render 'layouts/partials/user_navbar'
+    - else
+      = render 'layouts/partials/guest_navbar'
+    .container
+      = render 'partials/flash_alert'
+      = yield
+  = render 'layouts/partials/sign_up'
+  = render 'layouts/partials/new_snippet'
+

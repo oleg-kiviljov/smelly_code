@@ -1,0 +1,24 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top{role: 'navigation'}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: root_path}
+        %strong Smelly_Code
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li{class: ('active' if controller_name == 'snippets' && action_name == 'index')}
+          %a{href: snippets_path} View snippets
+        %li{class: ('active' if controller_name == 'pages' && action_name == 'about')}
+          %a{href: about_path} What is this?
+        %li
+          %a{href: '#sign-up', data:{'toggle' => 'modal'}} Sign up!
+      = form_for(User.new, url: user_session_path, html: {class: 'navbar-form navbar-right' }) do |f|
+        = f.email_field :email, placeholder: "Email", class: 'form-control'
+        = f.password_field :password, placeholder: "Password", class: 'form-control'
+        %button.btn.btn-primary{type: "submit"}
+          Sign in
+          %i.fa.fa-sign-in
+    / /.navbar-collapse
