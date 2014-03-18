@@ -1,21 +1,19 @@
 - decorated_snippet = snippet.decorate
 .snippet
   .row
-
-
-    .col-sm-12
-      %h3
-        = snippet.title
-    .col-sm-12
-      %p
+    .col-sm-8
+      %h2
+        = link_to snippet.title, snippet_path(snippet)
+    .col-sm-8
+      %p.description
         = snippet.description
-    %div{class: ((decorated_snippet.solved?) ? 'col-sm-6' : 'col-sm-12')}
+    %div{class: ((decorated_snippet.solved?) ? 'col-sm-6' : 'col-sm-8')}
       .smelly-code
-        .panel.panel-danger
+        .panel.panel-primary
           .panel-heading.clickable
             %h3.panel-title.clearfix
               %span.pull-left
-                Smelly code
+                Snippet
               %i.fa.fa-plus.pull-right
           .panel-body
             = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
@@ -50,7 +48,7 @@
               %span.language
                 %strong
                   = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
-    .col-sm-12
+    .col-sm-8
       %hr.small
 
 
