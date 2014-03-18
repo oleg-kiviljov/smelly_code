@@ -1,25 +1,32 @@
 - decorated_snippet = snippet.decorate
-.snippet
+%div{class: "snippet #{snippet.language.name}"}
   .row
     .col-sm-8
       %h2
         = link_to snippet.title, snippet_path(snippet)
+      %hr.small
+  .row
     .col-sm-8
       %p.description
         = snippet.description
-    %div{class: ((decorated_snippet.solved?) ? 'col-sm-6' : 'col-sm-8')}
-      .smelly-code
-        .panel.panel-primary
-          .panel-heading.clickable
-            %h3.panel-title.clearfix
-              %span.pull-left
-                Snippet
-              %i.fa.fa-minus.pull-right
-          .panel-body
-            = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
-            - unless decorated_snippet.solved?
-              = decorated_snippet.button
-
+      %hr.small
+  .row
+    .col-sm-8
+      %div{class: ((decorated_snippet.solved?) ? 'col-sm-6' : nil )}
+        .smelly-code
+          .panel.panel-primary
+            .panel-heading.clickable
+              %h3.panel-title.clearfix
+                %span.pull-left
+                  %i.fa.fa-user
+                  = link_to snippet.user.username, '#'
+                  = "(#{time_ago_in_words(snippet.created_at)} ago) in"
+                  = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
+                %i.fa.fa-minus.pull-right
+            .panel-body
+              = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
+              - unless decorated_snippet.solved?
+                = decorated_snippet.button
     - if decorated_snippet.solved?
       .col-sm-6
         .clean-code
@@ -31,25 +38,6 @@
                 %i.fa.fa-check.pull-right
             .panel-body
               = snippet.clean_body
-
-    .col-sm-12.header
-      %table
-        %tbody
-          %tr
-            %td
-              %span.label.label-primary
-                = "#{time_ago_in_words(snippet.created_at)} ago"
-            %td
-              %span.author
-                %i.fa.fa-user
-                %strong
-                = snippet.user.username
-            %td
-              %span.language
-                %strong
-                  = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
-    .col-sm-8
-      %hr.small
 
 
 

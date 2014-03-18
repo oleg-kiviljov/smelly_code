@@ -3,6 +3,7 @@ $(document).on("ready page:load", function(){
 // remove wrong paragraph that simple_format creates
 
 $('.snippet .panel-body p:first-child').remove();
+$('.snippet .panel-body .btn').prev('p').remove();
 
 // Sign up form validation
 
