@@ -7,11 +7,15 @@ class SnippetDecorator < Draper::Decorator
   end
 
   def button
+    classes = %w{btn btn-lg btn-block}
     if solved?
-      h.link_to 'View snippet', h.snippet_path(snippet), class: 'btn btn-primary btn-lg btn-block'
+      title = 'view'
+      classes.push('btn-primary')
     else
-      h.link_to 'Submit solution', '#', class: 'btn btn-success btn-lg btn-block'
+      title = 'refactor'
+      classes.push('btn-success')
     end
+    h.link_to title, h.snippet_path(snippet), class: classes.join(' ')
   end
 
   def solved?
