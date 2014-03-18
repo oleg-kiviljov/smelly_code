@@ -14,7 +14,7 @@
             %h3.panel-title.clearfix
               %span.pull-left
                 Snippet
-              %i.fa.fa-plus.pull-right
+              %i.fa.fa-minus.pull-right
           .panel-body
             = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
             - unless decorated_snippet.solved?

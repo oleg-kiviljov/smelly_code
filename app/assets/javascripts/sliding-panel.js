@@ -12,5 +12,5 @@ $(document).on('click', '.panel div.clickable', function (e) {
 });
 
 $(document).on("ready page:load", function(){
-  $('.panel-heading.clickable').addClass('panel-collapsed').parent('.panel').find('.panel-body').hide()
+  //$('.panel-heading.clickable').addClass('panel-collapsed').parent('.panel').find('.panel-body').hide()
 });
