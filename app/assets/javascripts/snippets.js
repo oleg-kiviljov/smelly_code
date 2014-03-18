@@ -1,5 +1,9 @@
 $(document).on("ready page:load", function(){
 
+// remove wrong paragraph that simple_format creates
+
+$('.snippet .panel-body p:first-child').remove();
+
 // Sign up form validation
 
   $("#new-snippet form").validate({
@@ -38,8 +42,16 @@ $(document).on("ready page:load", function(){
     },
     unhighlight: function(element) {
       $(element).parent('div').removeClass('has-error').addClass('has-success');
+      $(element).parent('div').find('.label-warning').remove()
+    },
+    errorPlacement: function(label, element) {
+      $('<span class="label label-warning"></span>').insertAfter(element)
+      $(element).next('span.label-warning').append(label)
+    },
+    errorPlacement: function(label, element) {
+      $('<span class="label label-warning"></span>').insertAfter(element)
+      $(element).next('span.label-warning').append(label)
     }
-
-    })
+  })
 
 });

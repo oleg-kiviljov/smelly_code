@@ -2,7 +2,8 @@ class SnippetDecorator < Draper::Decorator
   delegate_all
 
   def highlight_code(code, language)
-    CodeRay.scan(code, language).div
+    CodeRay.scan(code, language).div(css: :class)
+    #Pygments.highlight(code, lexer: language)
   end
 
   def button

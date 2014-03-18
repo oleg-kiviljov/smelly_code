@@ -1,5 +1,7 @@
 class Snippet < ActiveRecord::Base
 
+  default_scope { order(created_at: :desc) }
+
   # Per page setting
   self.per_page = 10
 

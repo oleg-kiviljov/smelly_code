@@ -6,11 +6,14 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{href: root_path}
-        %strong Smelly_Code
+        %strong
+        Smelly
+        %i.fa.fa-code
+        Code
     .navbar-collapse.collapse
       %ul.nav.navbar-nav
         %li{class: ('active' if controller_name == 'snippets' && action_name == 'index')}
-          %a{href: snippets_path} View snippets
+          %a{href: snippets_path} Snippets
         %li{class: ('active' if controller_name == 'pages' && action_name == 'about')}
           %a{href: about_path} What is this?
         %li

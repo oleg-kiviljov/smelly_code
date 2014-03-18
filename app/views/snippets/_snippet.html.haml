@@ -1,7 +1,39 @@
-// Use decorator methods for snippet
 - decorated_snippet = snippet.decorate
-.snippet.well
+.snippet
   .row
+
+
+    .col-sm-12
+      %h3
+        = snippet.title
+    .col-sm-12
+      %p
+        = snippet.description
+    %div{class: ((decorated_snippet.solved?) ? 'col-sm-6' : 'col-sm-12')}
+      .smelly-code
+        .panel.panel-danger
+          .panel-heading.clickable
+            %h3.panel-title.clearfix
+              %span.pull-left
+                Smelly code
+              %i.fa.fa-plus.pull-right
+          .panel-body
+            = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
+            - unless decorated_snippet.solved?
+              = decorated_snippet.button
+
+    - if decorated_snippet.solved?
+      .col-sm-6
+        .clean-code
+          .panel.panel-success
+            .panel-heading
+              %h3.panel-title.clearfix
+                %span.pull-left
+                  Clean code
+                %i.fa.fa-check.pull-right
+            .panel-body
+              = snippet.clean_body
+
     .col-sm-12.header
       %table
         %tbody
@@ -18,37 +50,8 @@
               %span.language
                 %strong
                   = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
+    .col-sm-12
       %hr.small
-    .col-sm-12
-      %h3
-        = snippet.title
-    .col-sm-12
-      %p
-        = snippet.description
-    %div{class: ((decorated_snippet.solved?) ? 'col-sm-6' : 'col-sm-12')}
-      .smelly-code
-        .panel.panel-danger
-          .panel-heading
-            %h3.panel-title.clearfix
-              %span.pull-left
-                Smelly code
-              %i.fa.fa-ban.pull-right
-          .panel-body
-            = raw decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)
-    - if decorated_snippet.solved?
-      .col-sm-6
-        .clean-code
-          .panel.panel-success
-            .panel-heading
-              %h3.panel-title.clearfix
-                %span.pull-left
-                  Clean code
-                %i.fa.fa-check.pull-right
-            .panel-body
-              = snippet.clean_body
-    .col-sm-12
-      .footer
-        = decorated_snippet.button
 
 
 

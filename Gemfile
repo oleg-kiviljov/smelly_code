@@ -61,3 +61,9 @@ gem 'draper' # https://github.com/drapergem/draper
 gem 'coderay' # https://github.com/rubychan/coderay
 
 gem 'sourceclassifier', path: '/Users/olegkiviljov/.rvm/gems/ruby-2.0.0-p247/gems/chrislo-sourceclassifier-0.2.3'
+
+gem 'awesome_print' # https://github.com/michaeldv/awesome_print
+
+gem 'pygments.rb' # https://github.com/tmm1/pygments.rb
+
+

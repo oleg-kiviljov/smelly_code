@@ -27,7 +27,7 @@ $("#sign-up form").validate({
     },
 "user[password_confirmation]": {
     required: true,
-    equalTo: '#user-password'
+    equalTo: '#sign_up_password'
     }
 },
 messages: {
@@ -56,6 +56,12 @@ messages: {
   },
   unhighlight: function(element) {
     $(element).parent('div').removeClass('has-error').addClass('has-success');
+    $(element).parent('div').next('.label-warning').remove()
+  },
+  errorPlacement: function(label, element) {
+    var $container = $(element).parent('div.form-group');
+    $('<span class="label label-warning"></span>').insertAfter($container)
+    $container.next('span.label-warning').append(label)
   }
 
 
