@@ -7,7 +7,7 @@
             %span.pull-left
               Sign up
             %button.pull-right.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}
-              %i.fa.fa-times-circle-o
+              %i.fa.fa-times
         .panel-body
           = form_for(User.new, url: user_registration_path(User.new), html: { class: 'form-horizontal' } ) do |f|
             .input-group.form-group
