@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 20140317002649) do
   end
 
   create_table "snippets", force: true do |t|
-    t.string   "title",                   null: false
-    t.text     "description",             null: false
-    t.text     "smelly_body",             null: false
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.text     "smelly_body", null: false
     t.text     "clean_body"
-    t.integer  "user_id",                 null: false
-    t.integer  "language_id",             null: false
-    t.integer  "status",      default: 0
+    t.integer  "user_id",     null: false
+    t.integer  "language_id", null: false
+    t.integer  "solved_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

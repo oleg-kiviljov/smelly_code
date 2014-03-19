@@ -20,30 +20,28 @@
   .row
     .col-sm-8
       .smelly-code
-        .panel.panel-danger
+        .panel
           %div{class: "panel-heading clickable #{ 'panel-collapsed' if decorated_snippet.solved?}"}
             %h3.panel-title.clearfix
-              %span.pull-left
+              %span.pull-left.text-warning
                 %i.fa.fa-warning
-                Smelly code
+                Smelly code |
               = decorated_snippet.panel_heading_icon
           .panel-body
             = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
-            - unless decorated_snippet.solved?
-              = decorated_snippet.button
     - if decorated_snippet.solved?
       .col-sm-8
         .clean-code
-          .panel.panel-success
+          .panel
             .panel-heading.clickable.panel-collapsed
               %h3.panel-title.clearfix
-                %span.pull-left
+                %span.pull-left.text-success
                   %i.fa.fa-check
                   Clean code
                 = decorated_snippet.panel_heading_icon
             .panel-body
               = simple_format(decorated_snippet.highlight_code(snippet.clean_body, snippet.language.name)).html_safe
-    - if decorated_snippet.solved? && action_name == 'index'
+    - if action_name == 'index'
       .col-sm-8
         = decorated_snippet.button
 

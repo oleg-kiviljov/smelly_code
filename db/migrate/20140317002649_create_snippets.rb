@@ -7,7 +7,7 @@ class CreateSnippets < ActiveRecord::Migration
       t.text :clean_body
       t.integer :user_id, null: false
       t.integer :language_id, null: false
-      t.integer :status, default: 0
+      t.integer :solved_by
       t.timestamps
     end
   end
