@@ -7,7 +7,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     self.resource = warden.authenticate!(scope: resource_name, recall: "#{controller_path}#cannot_sign_in")
     sign_in(resource_name, resource)
-    flash[:success] = t('devise.sessions.signed_in')
+    flash[:success] = "Welcome back, <strong>#{resource.username}</strong>!".html_safe
     redirect_to after_sign_in_path_for(resource)
   end
 

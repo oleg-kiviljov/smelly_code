@@ -17,7 +17,7 @@ SmellyCode::Application.routes.draw do
       }, path: ''
 
   devise_scope :user do
-    get "/profile" => "users/registrations#edit"
+    get "/settings" => "users/registrations#edit"
     post '/credentials_already_taken' => 'users/registrations#credentials_already_taken?'
   end
 

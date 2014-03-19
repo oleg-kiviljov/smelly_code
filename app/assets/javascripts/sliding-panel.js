@@ -3,14 +3,14 @@ $(document).on('click', '.panel div.clickable', function (e) {
   if ($this.hasClass('panel-collapsed')) {
     $this.parents('.panel').find('.panel-body').slideDown();
     $this.removeClass('panel-collapsed');
-    $this.find('i:last-child').removeClass('fa-plus').addClass('fa-minus');
+    $this.find('i:eq(1)').removeClass('fa-plus').addClass('fa-minus');
   } else {
     $this.parents('.panel').find('.panel-body').slideUp();
     $this.addClass('panel-collapsed');
-    $this.find('i:last-child').removeClass('fa-minus').addClass('fa-plus');
+    $this.find('i:eq(1)').removeClass('fa-minus').addClass('fa-plus');
   }
 });
 
 $(document).on("ready page:load", function(){
-  //$('.panel-heading.clickable').addClass('panel-collapsed').parent('.panel').find('.panel-body').hide()
+  $('.panel-heading.clickable.panel-collapsed').parent('.panel').find('.panel-body').hide()
 });

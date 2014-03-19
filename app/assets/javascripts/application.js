@@ -27,5 +27,5 @@ $(document).on("ready page:load", function(){
 function autohide_alerts() {
   setTimeout(function(){
     $(".alert").slideUp(300)
-  }, 3000);
+  }, 5000);
 }

@@ -48,11 +48,8 @@ $('.snippet .panel-body .btn').prev('p').remove();
     errorPlacement: function(label, element) {
       $('<span class="label label-warning"></span>').insertAfter(element)
       $(element).next('span.label-warning').append(label)
-    },
-    errorPlacement: function(label, element) {
-      $('<span class="label label-warning"></span>').insertAfter(element)
-      $(element).next('span.label-warning').append(label)
     }
+
   })
 
 });

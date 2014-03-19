@@ -2,9 +2,16 @@
 %div{class: "snippet #{snippet.language.name}"}
   .row
     .col-sm-8
-      %h2
+      %h4.clearfix
+        %span.pull-left
+          %i.fa.fa-user
+          = link_to snippet.user.username, '#'
+          = "(#{time_ago_in_words(snippet.created_at)} ago) in"
+          = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
+        %span.pull-right
+          = decorated_snippet.status_label
+      %h3
         = link_to snippet.title, snippet_path(snippet)
-      %hr.small
   .row
     .col-sm-8
       %p.description
@@ -12,32 +19,32 @@
       %hr.small
   .row
     .col-sm-8
-      %div{class: ((decorated_snippet.solved?) ? 'col-sm-6' : nil )}
-        .smelly-code
-          .panel.panel-primary
-            .panel-heading.clickable
-              %h3.panel-title.clearfix
-                %span.pull-left
-                  %i.fa.fa-user
-                  = link_to snippet.user.username, '#'
-                  = "(#{time_ago_in_words(snippet.created_at)} ago) in"
-                  = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
-                %i.fa.fa-minus.pull-right
-            .panel-body
-              = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
-              - unless decorated_snippet.solved?
-                = decorated_snippet.button
+      .smelly-code
+        .panel.panel-danger
+          %div{class: "panel-heading clickable #{ 'panel-collapsed' if decorated_snippet.solved?}"}
+            %h3.panel-title.clearfix
+              %span.pull-left
+                %i.fa.fa-warning
+                Smelly code
+              = decorated_snippet.panel_heading_icon
+          .panel-body
+            = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
+            - unless decorated_snippet.solved?
+              = decorated_snippet.button
     - if decorated_snippet.solved?
-      .col-sm-6
+      .col-sm-8
         .clean-code
           .panel.panel-success
-            .panel-heading
+            .panel-heading.clickable.panel-collapsed
               %h3.panel-title.clearfix
                 %span.pull-left
+                  %i.fa.fa-check
                   Clean code
-                %i.fa.fa-check.pull-right
+                = decorated_snippet.panel_heading_icon
             .panel-body
-              = snippet.clean_body
-
+              = simple_format(decorated_snippet.highlight_code(snippet.clean_body, snippet.language.name)).html_safe
+    - if decorated_snippet.solved? && action_name == 'index'
+      .col-sm-8
+        = decorated_snippet.button
 
 
