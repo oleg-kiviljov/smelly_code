@@ -21,7 +21,7 @@
     .col-sm-8
       .smelly-code
         .panel
-          %div{class: "panel-heading clickable #{ 'panel-collapsed' if decorated_snippet.solved?}"}
+          %div{class: "panel-heading clickable #{ 'panel-collapsed' if decorated_snippet.resolved?}"}
             %h3.panel-title.clearfix
               %span.pull-left.text-warning
                 %i.fa.fa-warning
@@ -29,7 +29,7 @@
               = decorated_snippet.panel_heading_icon
           .panel-body
             = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
-    - if decorated_snippet.solved?
+    - if decorated_snippet.resolved?
       .col-sm-8
         .clean-code
           .panel

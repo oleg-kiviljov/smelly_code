@@ -8,11 +8,11 @@ class SnippetDecorator < Draper::Decorator
 
   def status_label
     classes = %w{ label }
-    if solved?
-      label = 'Solved'
+    if resolved?
+      label = 'Resolved'
       classes.push('label-success')
     else
-      label = 'Unsolved'
+      label = 'Unresolved'
       classes.push('label-danger')
     end
     h.content_tag(:span, class: classes.join(' ')) do
@@ -22,7 +22,7 @@ class SnippetDecorator < Draper::Decorator
 
   def panel_heading_icon
     classes = %w{ fa pull-right }
-    if solved?
+    if resolved?
       classes.push('fa-plus')
     else
       classes.push('fa-minus')
@@ -32,8 +32,8 @@ class SnippetDecorator < Draper::Decorator
 
   def button
     classes = %w{btn btn-lg btn-block}
-    if solved?
-      title = 'view post'
+    if resolved?
+      title = 'view snippet'
       classes.push('btn-primary')
     else
       title = 'submit solution'
@@ -42,7 +42,7 @@ class SnippetDecorator < Draper::Decorator
     h.link_to title, h.snippet_path(snippet), class: classes.join(' ')
   end
 
-  def solved?
+  def resolved?
     object.clean_body.present?
   end
 
