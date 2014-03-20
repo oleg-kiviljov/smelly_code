@@ -1,17 +1,18 @@
 - decorated_snippet = snippet.decorate
 %div{class: "snippet #{snippet.language.name}"}
-  .row
-    .col-sm-12
-      %h4.clearfix
-        %span.pull-left
-          %i.fa.fa-user
-          = link_to snippet.user.username, '#'
-          = "(#{time_ago_in_words(snippet.created_at)} ago) in"
-          = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
-        %span.pull-right
-          = decorated_snippet.status_label
-      %h3
-        = link_to snippet.title, snippet_path(snippet)
+  %header
+    .row
+      .col-sm-12
+        %h4.clearfix
+          %span.pull-left
+            %i.fa.fa-user
+            = link_to snippet.user.username, '#'
+            = "(#{time_ago_in_words(snippet.created_at)} ago) in"
+            = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
+          %span.pull-right
+            = decorated_snippet.status_label
+        %h3
+          = link_to snippet.title, snippet_path(snippet)
   .row
     .col-sm-12
       %p.description

@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     where("username = ? or email = ?", login.downcase, login.downcase).present?
   end
 
+  def to_param
+    username
+  end
+
 end

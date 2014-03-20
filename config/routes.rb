@@ -7,6 +7,7 @@ SmellyCode::Application.routes.draw do
   # Resourceful routes
 
   resources :snippets, except: [:new, :destroy]
+  resources :users, only: [:show]
 
   # Devise routes for users
   devise_for :users,
