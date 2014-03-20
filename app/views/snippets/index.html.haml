@@ -1,2 +1,6 @@
-= render @snippets
+.row
+  .col-sm-8
+    = render partial: @snippets, spacer_template: 'separator'
+  .col-sm-4
+    ' Filters!'
 = render 'partials/pagination', resources: @snippets

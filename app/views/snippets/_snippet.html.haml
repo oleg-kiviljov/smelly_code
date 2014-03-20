@@ -1,7 +1,7 @@
 - decorated_snippet = snippet.decorate
 %div{class: "snippet #{snippet.language.name}"}
   .row
-    .col-sm-8
+    .col-sm-12
       %h4.clearfix
         %span.pull-left
           %i.fa.fa-user
@@ -13,12 +13,11 @@
       %h3
         = link_to snippet.title, snippet_path(snippet)
   .row
-    .col-sm-8
+    .col-sm-12
       %p.description
         = snippet.description
-      %hr.small
   .row
-    .col-sm-8
+    .col-sm-12
       .smelly-code
         .panel
           %div{class: "panel-heading clickable #{ 'panel-collapsed' if decorated_snippet.resolved?}"}
@@ -30,7 +29,7 @@
           .panel-body
             = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
     - if decorated_snippet.resolved?
-      .col-sm-8
+      .col-sm-12
         .clean-code
           .panel
             .panel-heading.clickable.panel-collapsed
@@ -41,8 +40,7 @@
                 = decorated_snippet.panel_heading_icon
             .panel-body
               = simple_format(decorated_snippet.highlight_code(snippet.clean_body, snippet.language.name)).html_safe
-    - if action_name == 'index'
-      .col-sm-8
-        = decorated_snippet.button
+
+
 
 
