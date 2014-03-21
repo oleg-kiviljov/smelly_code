@@ -29,3 +29,14 @@ function autohide_alerts() {
     $(".alert").slideUp(300)
   }, 5000);
 }
+
+function scroll_to_element(selector, time, verticalOffset) {
+  time = typeof(time) != 'undefined' ? time : 1000;
+  verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+  var element = $(selector);
+  var offset = element.offset();
+  var offsetTop = offset.top + verticalOffset;
+  $('html, body').animate({
+    scrollTop: offsetTop
+  }, time);
+}

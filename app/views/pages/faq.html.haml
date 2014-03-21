@@ -9,11 +9,12 @@
           %li.list-group-item
             %span.badge
               = faq.id
-            = link_to faq.question, "##{faq.id}"
+            = link_to faq.question, "##{faq.id}", class: 'faq-link'
 %hr
   - @faqs.each do |faq|
     %h2{id: faq.id}
       = "#{faq.id}. #{faq.question}"
     %p
       = faq.answer
+
 
