@@ -14,8 +14,8 @@
       %ul.nav.navbar-nav
         %li{class: ('active' if controller_name == 'snippets' && action_name == 'index')}
           %a{href: snippets_path} Snippets
-        %li{class: ('active' if controller_name == 'pages' && action_name == 'about')}
-          %a{href: about_path} About site
+        %li{class: ('active' if controller_name == 'pages' && action_name == 'faq')}
+          %a{href: faq_path} F.A.Q
         %li
           %a{href: '#sign-up', data:{'toggle' => 'modal'}} Sign up!
       = form_for(User.new, url: user_session_path, html: {class: 'navbar-form navbar-right' }) do |f|

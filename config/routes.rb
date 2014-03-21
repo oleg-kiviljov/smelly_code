@@ -2,7 +2,7 @@ SmellyCode::Application.routes.draw do
 
   # Routes for static pages
   root "snippets#index"
-  get '/about' => 'pages#about'
+  get '/faq' => 'pages#faq'
 
   # Resourceful routes
 

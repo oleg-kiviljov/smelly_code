@@ -1,0 +1,19 @@
+%h1
+  Frequently Asked Questions
+%hr
+.row
+  - @faqs.in_groups_of(5).each do |faq_group|
+    .col-sm-6
+      %ul.list-group
+        - faq_group.each do |faq|
+          %li.list-group-item
+            %span.badge
+              = faq.id
+            = link_to faq.question, "##{faq.id}"
+%hr
+  - @faqs.each do |faq|
+    %h2{id: faq.id}
+      = "#{faq.id}. #{faq.question}"
+    %p
+      = faq.answer
+

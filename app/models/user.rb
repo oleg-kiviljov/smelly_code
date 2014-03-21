@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     where("username = ? or email = ?", login.downcase, login.downcase).present?
   end
 
+  def self.find(input)
+    input.to_i == 0 ? find_by(username: input) : super
+  end
+
   def to_param
     username
   end

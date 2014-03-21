@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
-  def about
+  def faq
+    @faqs = Faq.all
   end
 
 end
