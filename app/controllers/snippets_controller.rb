@@ -12,16 +12,41 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.find(params[:id])
   end
 
+  def new
+    @snippet = Snippet.new
+    @languages = Language.all
+  end
+
   def create
     @snippet = current_user.snippets.build(snippet_params)
-    @snippet.language_id = 1 #detect_source_language(@snippet.smelly_body)
     if @snippet.save
-      flash[:success] = 'Snippet posted successfully.'
-      redirect_to snippet_path(@snippet)
+      flash[:success] = 'Snippet added successfully.'
+      redirect_to snippets_path
     else
-      flash[:danger] = "Couldn't save snippet."
+      # render errors here
       redirect_to root_path
     end
+  end
+
+  def edit
+    @snippet = Snippet.find(params[:id])
+    @languages = Language.all
+  end
+
+  def update
+    @snippet = Snippet.find(params[:id])
+    if @snippet.update(snippet_params)
+      flash[:success] = 'Snippet updated successfully.'
+      redirect_to snippet_path(@snippet)
+    else
+      #render errors here
+    end
+  end
+
+  def highlight_code
+    snippet_decorator = SnippetDecorator.new(Snippet.new)
+    highlighted_code = snippet_decorator.highlight_code(params[:smelly_code], params[:language])
+    render json: { highlighted_code: highlighted_code }
   end
 
   private
@@ -36,7 +61,7 @@ class SnippetsController < ApplicationController
   end
 
   def snippet_params
-    params.require(:snippet).permit(:title, :description, :smelly_body)
+    params.require(:snippet).permit(:title, :description, :smelly_body, :language_id)
   end
 
 end

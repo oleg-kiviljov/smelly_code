@@ -1,13 +1,32 @@
 $(document).on("ready page:load", function(){
 
-// remove wrong paragraph that simple_format creates
+// Insert values from form to snippet example
+  $("#snippet-form #snippet_title, #snippet_description, select").on("keyup blur", function(){
+    var selector_id = $(this).attr('id').replace('snippet_', '');
+    var $selector = $("#"+selector_id);
+    insert_text($(this), $selector)
+  });
 
-$('.snippet .panel-body p:first-child').remove();
-$('.CodeRay').next('p').remove();
+// Insert programming language on page load
+insert_text($("#snippet_language_id"), $("#language_id"));
+
+// Insert highlighted code into example snippet
+$("#snippet_language_id").on("change", function(){
+   var smelly_code = $("#snippet_smelly_body").val()
+   var language = $("#snippet_language_id").children("option:selected").text();
+   highlight_smelly_code(smelly_code, language)
+});
+
+$("#snippet_smelly_body").on("blur", function(){
+  var smelly_code = $(this).val();
+  var language = $("#snippet_language_id").children("option:selected").text();
+  highlight_smelly_code(smelly_code, language)
+});
+
 
 // Sign up form validation
 
-  $("#new-snippet form").validate({
+  $("#snippet-form form").validate({
     rules: {
       "snippet[title]": {
         required: true,
@@ -15,7 +34,7 @@ $('.CodeRay').next('p').remove();
       },
       "snippet[description]": {
         required: true,
-        minlength: 100,
+        minlength: 50,
         maxlength: 300
       },
       "snippet[smelly_body]": {
@@ -25,16 +44,16 @@ $('.CodeRay').next('p').remove();
     },
     messages: {
       "snippet[title]": {
-        required: "Can't be blank",
-        maxlength: "Please, choose something shorter"
+        required: "There is no title",
+        maxlength: "Too long for a title"
       },
       "snippet[description]": {
-        required: "Can't be blank",
+        required: "Minimum: 50 characters",
         maxlength: "No need to be so specific. This description is too long",
-        minlength: "Please provide a more detailed description"
+        minlength: "Please provide more detailed description"
       },
       "snippet[smelly_body]": {
-        required: "Can't be blank",
+        required: "There is no smelly code :(",
         maxlength: "Snippet can't be longer than 500 characters"
       }
     },
@@ -43,13 +62,44 @@ $('.CodeRay').next('p').remove();
     },
     unhighlight: function(element) {
       $(element).parent('div').removeClass('has-error').addClass('has-success');
-      $(element).parent('div').find('.label-warning').remove()
+      $(element).parent('div').find('.label-danger').remove()
     },
     errorPlacement: function(label, element) {
-      $('<span class="label label-warning"></span>').insertAfter(element)
-      $(element).next('span.label-warning').append(label)
+      $('<span class="label label-danger"></span>').insertAfter(element)
+      $(element).next('span.label-danger').append(label)
     }
-
   })
 
 });
+
+function highlight_smelly_code(smelly_code, language){
+  $.ajax({
+    type: 'POST',
+    url: '/snippets/highlight_code',
+    data: { smelly_code: smelly_code, language: language }
+  }).success(function(data){
+        $("#smelly_body").empty().html(data.highlighted_code);
+      })
+}
+
+function insert_text($input, $selector){
+  var tag = $input.prop("tagName");
+  if(tag == 'SELECT'){
+    var value = $input.children("option:selected").text();
+  } else {
+    var value = $input.val() || $input.text();
+  }
+  $selector.text(value)
+}
+
+function load_result_snippet(){
+  var title = $("#snippet_title").val();
+  var description = $("#snippet_description").val();
+  var raw_smelly_code = $("#snippet_smelly_body").val();
+  var language = $("#snippet_language_id").children("option:selected").text();
+  var highlighted_smelly_code = highlight_smelly_code(raw_smelly_code, language)
+
+  $("#title").text(title);
+  $("#description").text(description);
+  $("#smelly_body").text(highlighted_smelly_code);
+}

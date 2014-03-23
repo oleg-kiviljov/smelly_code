@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/olegkiviljov/.rvm/gems/ruby-2.0.0-p247/gems/chrislo-sourceclassifier-0.2.3
+GIT
+  remote: https://github.com/chrislo/sourceclassifier.git
+  revision: c79886968c113033d692ab2d4998d1e7f0195135
   specs:
     sourceclassifier (0.2.3)
       classifier
@@ -222,7 +223,6 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   cancan
-  coderay
   country_select
   devise
   draper

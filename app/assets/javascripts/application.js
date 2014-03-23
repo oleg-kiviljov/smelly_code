@@ -15,14 +15,17 @@
 //= require turbolinks
 //= require bootstrap
 //= require jquery-validation/jquery.validate.min
+//= require jquery-timeago/jquery.timeago
 //= require_self
 //= require_tree .
 
 $(document).on("ready page:load", function(){
-
   autohide_alerts();
-
 });
+
+function initialize_timeago(){
+  $('.time-ago').timeago();
+}
 
 function autohide_alerts() {
   setTimeout(function(){
@@ -40,3 +43,5 @@ function scroll_to_element(selector, time, verticalOffset) {
     scrollTop: offsetTop
   }, time);
 }
+
+

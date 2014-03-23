@@ -1,0 +1,14 @@
+.row
+  .col-sm-4.well#snippet-form
+    %legend.clearfix
+      %span.pull-left
+        New snippet
+      %span.pull-right
+        %i.fa.fa-code
+        %sup new
+    = render 'snippets/form'
+  .col-sm-8
+    = render 'snippets/result'
+
+
+

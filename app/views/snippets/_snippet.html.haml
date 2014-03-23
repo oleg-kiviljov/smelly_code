@@ -1,24 +1,27 @@
 - decorated_snippet = snippet.decorate
 %div{class: "snippet #{snippet.language.name}"}
-  %header
-    .row
-      .col-sm-12
-        %h4.clearfix
-          %span.pull-left
-            %i.fa.fa-user
-            = link_to snippet.user.username, '#'
-            = "(#{time_ago_in_words(snippet.created_at)} ago) in"
-            = link_to "#{snippet.language.name.capitalize}", snippets_path(page: 1, language: snippet.language.name)
-          %span.pull-right
-            = decorated_snippet.status_label
-        %h3
-          = link_to snippet.title, snippet_path(snippet)
+  .row
+    .col-sm-12
+      %h4.clearfix
+        %span.pull-left
+          %i.fa.fa-user
+          = link_to snippet.user.username, '#'
+          = "(#{time_ago_in_words(snippet.created_at)} ago) in"
+          = link_to "#{snippet.language.name}", snippets_path(page: 1, language: snippet.language.name)
+        %span.pull-right
+          = decorated_snippet.status_label
+      %h3
+        = link_to snippet.title, snippet_path(snippet)
   .row
     .col-sm-12
       %p.description
         = snippet.description
   .row
     .col-sm-12
+      %p.clearfix
+        %span.pull-right
+          = link_to edit_snippet_path(snippet), class: 'edit' do
+            %i.fa.fa-edit Edit this snippet
       .smelly-code
         .panel
           %div{class: "panel-heading clickable #{ 'panel-collapsed' if decorated_snippet.resolved?}"}
@@ -41,6 +44,14 @@
                 = decorated_snippet.panel_heading_icon
             .panel-body
               = simple_format(decorated_snippet.highlight_code(snippet.clean_body, snippet.language.name)).html_safe
+
+
+:javascript
+  $(document).on("ready page:load", function(){
+    // Remove wrong paragraph that simple_format creates
+    $('.snippet .panel-body p:first-child').remove();
+    $('.highlight').next('p').remove();
+  })
 
 
 

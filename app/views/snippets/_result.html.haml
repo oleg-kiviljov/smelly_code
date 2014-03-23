@@ -1,0 +1,31 @@
+%div{class: "snippet"}
+.row
+  .col-sm-12
+    %h4.clearfix
+      %span.pull-left
+        %i.fa.fa-user
+        = link_to current_user.username, '#'
+        %span#header
+          %span.timeago (less than a minute ago)
+          in
+          %a#language_id{href: '#'}
+      %span.pull-right
+        %span.label.label-danger unresolved
+      %h3.title-container
+        %a#title{href: '#'}
+.row
+  .col-sm-12
+    %p.description#description
+.row
+  .col-sm-12
+    .smelly-code
+      .panel
+        %div{class: "panel-heading clickable"}
+          %h3.panel-title.clearfix
+            %span.pull-left.text-warning
+              %i.fa.fa-warning
+              Smelly code |
+            %span.pull-right
+              %i.fa.fa-minus
+        .panel-body
+          %span#smelly_body

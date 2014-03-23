@@ -1,5 +1,1 @@
 en:
-  snippet_placeholders:
-    title: 'A title for your post.'
-    description: 'Describe with a few sentences what are you trying to accomplish with this code. Good description saves time of those who read this piece of code and makes it easier to refactor properly.'
-    smelly_body: 'Just copy-paste here piece of code you need a help with.'

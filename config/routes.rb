@@ -6,7 +6,9 @@ SmellyCode::Application.routes.draw do
 
   # Resourceful routes
 
-  resources :snippets, except: [:new, :destroy]
+  resources :snippets, except: [:destroy] do
+    post 'highlight_code' => 'snippets#highlight_code', on: :collection
+  end
   resources :users, only: [:show]
 
   # Devise routes for users

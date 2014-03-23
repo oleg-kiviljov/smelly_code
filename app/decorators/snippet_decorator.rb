@@ -2,8 +2,8 @@ class SnippetDecorator < Draper::Decorator
   delegate_all
 
   def highlight_code(code, language)
-    CodeRay.scan(code, language).div(css: :class)
-    #Pygments.highlight(code, lexer: language)
+    #CodeRay.scan(code, language).div(css: :class)
+    Pygments.highlight(code, lexer: language.downcase, options: {linenos: :inline})
   end
 
   def status_label

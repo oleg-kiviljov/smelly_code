@@ -1,0 +1,6 @@
+= simple_form_for(@snippet) do |f|
+  = f.input :title, as: :text, input_html: { rows: 2 }, required: false
+  = f.input :description, input_html: { maxlength: 300} , required: false
+  = f.input :smelly_body, label: 'Smelly code', required: false
+  = f.input :language_id, collection: @languages, label_method: :name, value_method: :id, label: 'Programming language', required: false, include_blank: false
+  = f.button :submit, class: 'btn btn-primary btn-block'
