@@ -39,8 +39,12 @@ $("#snippet_smelly_body").on("blur", function(){
       },
       "snippet[smelly_body]": {
         required: true,
-        maxlength: 500
-      }
+          remote: {
+            type: 'POST',
+            url: '/snippets/check_lines_of_code',
+            data: {language: $("#snippet_language_id").children("option:selected").text()}
+          }
+        }
     },
     messages: {
       "snippet[title]": {
@@ -54,7 +58,7 @@ $("#snippet_smelly_body").on("blur", function(){
       },
       "snippet[smelly_body]": {
         required: "There is no smelly code :(",
-        maxlength: "Snippet can't be longer than 500 characters"
+        remote: "Only 15 lines of code allowed (empty lines don't count)"
       }
     },
     highlight: function(element) {

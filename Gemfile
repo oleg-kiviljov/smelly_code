@@ -64,4 +64,6 @@ gem 'awesome_print' # https://github.com/michaeldv/awesome_print
 
 gem 'pygments.rb' # https://github.com/tmm1/pygments.rb
 
+gem 'coderay' # https://github.com/rubychan/coderay
+
 

@@ -6,7 +6,8 @@
         %i.fa.fa-user
         = link_to current_user.username, '#'
         %span#header
-          %span.timeago (less than a minute ago)
+          %span.timeago
+            = (@snippet.created_at) ? "(#{time_ago_in_words(@snippet.created_at)} ago)"  : '(less than a minute ago)'
           in
           %a#language_id{href: '#'}
       %span.pull-right

@@ -8,7 +8,6 @@ class Snippet < ActiveRecord::Base
   validates :title, :description, :smelly_body, :language_id, presence: true
   validates :title, length: {maximum: 200}
   validates :description, length: {minimum: 50, maximum: 300}
-  validates :smelly_body, length: {maximum: 500}
 
   belongs_to :language
   belongs_to :user

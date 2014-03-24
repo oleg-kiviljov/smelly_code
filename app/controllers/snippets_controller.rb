@@ -23,8 +23,8 @@ class SnippetsController < ApplicationController
       flash[:success] = 'Snippet added successfully.'
       redirect_to snippets_path
     else
-      # render errors here
-      redirect_to root_path
+      flash[:error] = "Couldn't add snippet."
+      redirect_to new_snippet_path
     end
   end
 
@@ -39,7 +39,8 @@ class SnippetsController < ApplicationController
       flash[:success] = 'Snippet updated successfully.'
       redirect_to snippet_path(@snippet)
     else
-      #render errors here
+      flash[:error] = "Couldn't update snippet."
+      redirect_to edit_snippet_path(@snippet)
     end
   end
 
@@ -49,15 +50,16 @@ class SnippetsController < ApplicationController
     render json: { highlighted_code: highlighted_code }
   end
 
+  def check_lines_of_code
+    code = params[:snippet][:smelly_body]
+    language = params[:language]
+    render json: count_lines_of_code(code, language) < 15
+  end
+
   private
 
-  def detect_source_language(code)
-    code_to_identify = (<<-EOT)
-      "#{code}"
-    EOT
-    source_classifier = SourceClassifier.new
-    language = source_classifier.identify(code_to_identify)
-    Language.find_by(name: language).id
+  def count_lines_of_code(code, language)
+    CodeRay.scan(code, language).loc
   end
 
   def snippet_params
