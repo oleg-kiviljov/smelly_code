@@ -127,6 +127,8 @@ GEM
     less-rails (2.4.2)
       actionpack (>= 3.1)
       less (~> 2.4.0)
+    less-rails-bootstrap (3.1.1.0)
+      less-rails (~> 2.4.2)
     libv8 (3.16.14.3)
     lumberjack (1.0.4)
     mail (2.5.4)
@@ -262,6 +264,7 @@ DEPENDENCIES
   jquery-rails
   ledermann-rails-settings
   less-rails
+  less-rails-bootstrap
   lumberjack
   mechanize
   nokogiri

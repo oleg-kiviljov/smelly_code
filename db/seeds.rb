@@ -10,23 +10,18 @@ Shell
 Ruby
 Objective-C
 C#
-Assembly
 Perl
 D
-VisualBasic
 Delphi
 Scala
 ActionScript
 ColdFusion
 Lua
-Ada
 Pascal
 Haskell
-Scheme
 Lisp
 Clojure
 Erlang
-Fortran
  }
 
 LEXERS.sort! {|a, z| a <=> z}

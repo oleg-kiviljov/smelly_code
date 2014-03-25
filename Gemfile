@@ -70,7 +70,9 @@ gem 'ledermann-rails-settings', :require => 'rails-settings' # https://github.co
 
 gem 'chosen-rails' # https://github.com/tsechingho/chosen-rails
 
-gem 'less-rails' # https://github.com/metaskills/less-rails
+gem 'less-rails' # https://github.com/metaskills/less-rails # https://github.com/metaskills/less-rails-bootstrap
+
+gem 'less-rails-bootstrap'
 
 gem 'therubyracer' # https://github.com/cowboyd/therubyracer
 
