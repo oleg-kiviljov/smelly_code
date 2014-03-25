@@ -5,7 +5,7 @@
       %h4.clearfix
         %span.pull-left
           %i.fa.fa-user
-          = link_to snippet.user.username, '#'
+          = link_to snippet.user.username, user_path(snippet.user)
           = "(#{time_ago_in_words(snippet.created_at)} ago) in"
           = link_to "#{snippet.lexer.name}", snippets_path(page: 1, lexer: snippet.lexer.name)
         %span.pull-right

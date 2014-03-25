@@ -9,7 +9,7 @@
             %span.timeago
               = (@snippet.created_at) ? "(#{time_ago_in_words(@snippet.created_at)} ago)"  : '(less than a minute ago)'
             in
-            %a#language_id{href: '#'}
+            %a#lexer_id{href: '#'}
         %span.pull-right
           %span.label.label-danger unresolved
         %h3.title-container
@@ -30,4 +30,5 @@
                 %i.fa.fa-minus
           .panel-body
             %span#smelly_body
-    %button.btn.btn-primary.btn-block#create-snippet Create Snippet
+    %button.btn.btn-primary.btn-block#create-snippet
+      = action

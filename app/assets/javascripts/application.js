@@ -43,6 +43,10 @@ function autohide_alerts() {
   }, 5000);
 }
 
+function fetch_resource_id(){
+  return window.location.href.split('/')[4]
+}
+
 function scroll_to_element(selector, time, verticalOffset) {
   time = typeof(time) != 'undefined' ? time : 1000;
   verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;

@@ -45,15 +45,14 @@ class SnippetsController < ApplicationController
   end
 
   def highlight_code
-    snippet_decorator = SnippetDecorator.new(Snippet.new)
-    highlighted_code = snippet_decorator.format_code(current_user)
+    style = current_user.settings(:highlight).style
+    linenos = current_user.settings(:highlight).linenos
+    highlighted_code = Pygments.highlight(params[:smelly_code], lexer: params[:lexer].downcase, options: {linenos: linenos, cssclass: "highlight #{style}"})
     render json: { highlighted_code: highlighted_code }
   end
 
   def check_lines_of_code
-    code = params[:snippet][:smelly_body]
-    lexer = params[:lexer]
-    render json: count_lines_of_code(code, lexer) < 15
+    render json: count_lines_of_code(params[:snippet][:smelly_body], params[:lexer]) < 15
   end
 
   private
