@@ -50,15 +50,13 @@ gem 'lumberjack' # https://github.com/bdurand/lumberjack
 
 gem 'sidekiq' # http://sidekiq.org/
 
-gem "cancan" # https://github.com/ryanb/cancan
+gem 'cancan' # https://github.com/ryanb/cancan
 
 gem 'country_select' # https://rubygems.org/gems/country_select
 
 gem 'will_paginate-bootstrap' # https://github.com/bootstrap-ruby/will_paginate-bootstrap
 
 gem 'draper' # https://github.com/drapergem/draper
-
-gem 'sourceclassifier', git: "https://github.com/chrislo/sourceclassifier.git"
 
 gem 'awesome_print' # https://github.com/michaeldv/awesome_print
 
@@ -69,6 +67,14 @@ gem 'coderay' # https://github.com/rubychan/coderay
 gem 'best_in_place' , github: 'bernat/best_in_place', branch: "rails-4" # https://github.com/bernat/best_in_place
 
 gem 'ledermann-rails-settings', :require => 'rails-settings' # https://github.com/ledermann/rails-settings
+
+gem 'chosen-rails' # https://github.com/tsechingho/chosen-rails
+
+gem 'less-rails' # https://github.com/metaskills/less-rails
+
+gem 'therubyracer' # https://github.com/cowboyd/therubyracer
+
+
 
 
 

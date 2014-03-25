@@ -14,17 +14,27 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require sliding-panel/sliding-panel
 //= require jquery-validation/jquery.validate.min
 //= require jquery-timeago/jquery.timeago
-//= require_self
+//= require chosen-jquery
 //= require_tree .
+//= require_self
 
 $(document).on("ready page:load", function(){
   autohide_alerts();
+  initialize_chosen();
 });
 
 function initialize_timeago(){
   $('.time-ago').timeago();
+}
+
+function initialize_chosen(){
+  $('.chosen-select').chosen({
+    no_results_text: 'Nothing to show',
+    width: '100%'
+  })
 }
 
 function autohide_alerts() {

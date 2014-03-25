@@ -12,7 +12,6 @@ Objective-C
 C#
 Assembly
 Perl
-ASP
 D
 VisualBasic
 Delphi
