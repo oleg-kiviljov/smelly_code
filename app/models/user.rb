@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
 
+  has_settings do |s|
+    s.key :highlight, defaults:{ style: 'github', linenos: 'inline' }
+    s.key :snippet, defaults: { expand: true }
+  end
+
   devise :database_authenticatable, :registerable, :recoverable,  :trackable, :validatable
 
   validates :username, :email, presence: true

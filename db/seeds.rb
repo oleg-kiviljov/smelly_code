@@ -1,7 +1,39 @@
 # Seed programming languages
-LANGUAGE_LIST = %w{ Ruby Python PHP }
-LANGUAGE_LIST.each do |language|
-  Language.create(name: language)
+LEXERS = %w{
+C
+Java
+PHP
+JavaScript
+C++
+Python
+Shell
+Ruby
+Objective-C
+C#
+Assembly
+Perl
+ASP
+D
+VisualBasic
+Delphi
+Scala
+ActionScript
+ColdFusion
+Lua
+Ada
+Pascal
+Haskell
+Scheme
+Lisp
+Clojure
+Erlang
+Fortran
+ }
+
+LEXERS.sort! {|a, z| a <=> z}
+
+LEXERS.each do |lexer|
+  Lexer.create(name: lexer)
 end
 p 'Seeded languages'
 

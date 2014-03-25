@@ -1,5 +1,5 @@
 - decorated_snippet = snippet.decorate
-%div{class: "snippet #{snippet.language.name}"}
+%div{class: "snippet #{snippet.lexer.name}"}
   .row
     .col-sm-12
       %h4.clearfix
@@ -7,7 +7,7 @@
           %i.fa.fa-user
           = link_to snippet.user.username, '#'
           = "(#{time_ago_in_words(snippet.created_at)} ago) in"
-          = link_to "#{snippet.language.name}", snippets_path(page: 1, language: snippet.language.name)
+          = link_to "#{snippet.lexer.name}", snippets_path(page: 1, lexer: snippet.lexer.name)
         %span.pull-right
           = decorated_snippet.status_label
       %h3
@@ -32,7 +32,7 @@
                 Smelly code |
               = decorated_snippet.panel_heading_icon
           .panel-body
-            = simple_format(decorated_snippet.highlight_code(snippet.smelly_body, snippet.language.name)).html_safe
+            = decorated_snippet.format_code(current_user)
     - if decorated_snippet.resolved?
       .col-sm-12
         .clean-code
@@ -44,7 +44,7 @@
                   Clean code
                 = decorated_snippet.panel_heading_icon
             .panel-body
-              = simple_format(decorated_snippet.highlight_code(snippet.clean_body, snippet.language.name)).html_safe
+              = decorated_snippet.format_code(current_user)
 
 
 :javascript

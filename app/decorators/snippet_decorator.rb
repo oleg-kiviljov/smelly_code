@@ -1,9 +1,14 @@
 class SnippetDecorator < Draper::Decorator
   delegate_all
 
-  def highlight_code(code, language)
-    #CodeRay.scan(code, language).div(css: :class)
-    Pygments.highlight(code, lexer: language.downcase, options: {linenos: :inline})
+  def highlight_code(user)
+    style = user.settings(:highlight).style
+    linenos = user.settings(:highlight).linenos
+    Pygments.highlight(object.smelly_body, lexer: object.lexer.name.downcase, options: {linenos: linenos, cssclass: "highlight #{style}"})
+  end
+
+  def format_code(user)
+    h.simple_format(highlight_code(user)).html_safe
   end
 
   def status_label

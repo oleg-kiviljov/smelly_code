@@ -3,8 +3,8 @@ class SnippetsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    snippet_collection = Snippet.all.includes(:language)
-    snippet_collection = Language.find_by(name: params[:language]).snippets if params[:language]
+    snippet_collection = Snippet.all.includes(:lexer)
+    snippet_collection = Lexer.find_by(name: params[:lexer]).snippets if params[:lexer]
     @snippets = snippet_collection.page(params[:page])
   end
 
@@ -14,23 +14,23 @@ class SnippetsController < ApplicationController
 
   def new
     @snippet = Snippet.new
-    @languages = Language.all
+    @lexers = Lexer.all
   end
 
   def create
     @snippet = current_user.snippets.build(snippet_params)
     if @snippet.save
-      flash[:success] = 'Snippet added successfully.'
+      flash[:success] = 'Snippet created successfully.'
       redirect_to snippets_path
     else
-      flash[:error] = "Couldn't add snippet."
+      flash[:error] = "Couldn't create snippet."
       redirect_to new_snippet_path
     end
   end
 
   def edit
     @snippet = Snippet.find(params[:id])
-    @languages = Language.all
+    @lexers = Lexer.all
   end
 
   def update
@@ -46,24 +46,24 @@ class SnippetsController < ApplicationController
 
   def highlight_code
     snippet_decorator = SnippetDecorator.new(Snippet.new)
-    highlighted_code = snippet_decorator.highlight_code(params[:smelly_code], params[:language])
+    highlighted_code = snippet_decorator.format_code(current_user)
     render json: { highlighted_code: highlighted_code }
   end
 
   def check_lines_of_code
     code = params[:snippet][:smelly_body]
-    language = params[:language]
-    render json: count_lines_of_code(code, language) < 15
+    lexer = params[:lexer]
+    render json: count_lines_of_code(code, lexer) < 15
   end
 
   private
 
-  def count_lines_of_code(code, language)
-    CodeRay.scan(code, language).loc
+  def count_lines_of_code(code, lexer)
+    CodeRay.scan(code, lexer).loc
   end
 
   def snippet_params
-    params.require(:snippet).permit(:title, :description, :smelly_body, :language_id)
+    params.require(:snippet).permit(:title, :description, :smelly_body, :lexer_id)
   end
 
 end

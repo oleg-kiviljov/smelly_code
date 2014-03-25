@@ -26,7 +26,7 @@ $("#snippet_smelly_body").on("blur", function(){
 
 // Sign up form validation
 
-  $("#snippet-form form").validate({
+  var snippet_form = $("#snippet-form form").validate({
     rules: {
       "snippet[title]": {
         required: true,
@@ -48,7 +48,7 @@ $("#snippet_smelly_body").on("blur", function(){
     },
     messages: {
       "snippet[title]": {
-        required: "There is no title",
+        required: "Title is missing",
         maxlength: "Too long for a title"
       },
       "snippet[description]": {
@@ -72,6 +72,11 @@ $("#snippet_smelly_body").on("blur", function(){
       $('<span class="label label-danger"></span>').insertAfter(element)
       $(element).next('span.label-danger').append(label)
     }
+  });
+
+  $("#create-snippet").click(function(){
+    snippet_form.form();
+    if(snippet_form.valid()) { $("#snippet-form form").submit() }
   })
 
 });

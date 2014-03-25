@@ -1,0 +1,61 @@
+.highlight.github .hll { background-color: #ffffcc }
+.highlight.github .c { color: #999988; font-style: italic } /* Comment */
+.highlight.github .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight.github .k { color: #000000; font-weight: bold } /* Keyword */
+.highlight.github .o { color: #000000; font-weight: bold } /* Operator */
+.highlight.github .cm { color: #999988; font-style: italic } /* Comment.highlight.github .Multiline */
+.highlight.github .cp { color: #999999; font-weight: bold; font-style: italic } /* Comment.highlight.github .Preproc */
+.highlight.github .c1 { color: #999988; font-style: italic } /* Comment.highlight.github .Single */
+.highlight.github .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.highlight.github .Special */
+.highlight.github .gd { color: #000000; background-color: #ffdddd } /* Generic.highlight.github .Deleted */
+.highlight.github .ge { color: #000000; font-style: italic } /* Generic.highlight.github .Emph */
+.highlight.github .gr { color: #aa0000 } /* Generic.highlight.github .Error */
+.highlight.github .gh { color: #999999 } /* Generic.highlight.github .Heading */
+.highlight.github .gi { color: #000000; background-color: #ddffdd } /* Generic.highlight.github .Inserted */
+.highlight.github .go { color: #888888 } /* Generic.highlight.github .Output */
+.highlight.github .gp { color: #555555 } /* Generic.highlight.github .Prompt */
+.highlight.github .gs { font-weight: bold } /* Generic.highlight.github .Strong */
+.highlight.github .gu { color: #aaaaaa } /* Generic.highlight.github .Subheading */
+.highlight.github .gt { color: #aa0000 } /* Generic.highlight.github .Traceback */
+.highlight.github .kc { color: #000000; font-weight: bold } /* Keyword.highlight.github .Constant */
+.highlight.github .kd { color: #000000; font-weight: bold } /* Keyword.highlight.github .Declaration */
+.highlight.github .kn { color: #000000; font-weight: bold } /* Keyword.highlight.github .Namespace */
+.highlight.github .kp { color: #000000; font-weight: bold } /* Keyword.highlight.github .Pseudo */
+.highlight.github .kr { color: #000000; font-weight: bold } /* Keyword.highlight.github .Reserved */
+.highlight.github .kt { color: #445588; font-weight: bold } /* Keyword.highlight.github .Type */
+.highlight.github .m { color: #009999 } /* Literal.highlight.github .Number */
+.highlight.github .s { color: #d01040 } /* Literal.highlight.github .String */
+.highlight.github .na { color: #008080 } /* Name.highlight.github .Attribute */
+.highlight.github .nb { color: #0086B3 } /* Name.highlight.github .Builtin */
+.highlight.github .nc { color: #445588; font-weight: bold } /* Name.highlight.github .Class */
+.highlight.github .no { color: #008080 } /* Name.highlight.github .Constant */
+.highlight.github .nd { color: #3c5d5d; font-weight: bold } /* Name.highlight.github .Decorator */
+.highlight.github .ni { color: #800080 } /* Name.highlight.github .Entity */
+.highlight.github .ne { color: #990000; font-weight: bold } /* Name.highlight.github .Exception */
+.highlight.github .nf { color: #990000; font-weight: bold } /* Name.highlight.github .Function */
+.highlight.github .nl { color: #990000; font-weight: bold } /* Name.highlight.github .Label */
+.highlight.github .nn { color: #555555 } /* Name.highlight.github .Namespace */
+.highlight.github .nt { color: #000080 } /* Name.highlight.github .Tag */
+.highlight.github .nv { color: #008080 } /* Name.highlight.github .Variable */
+.highlight.github .ow { color: #000000; font-weight: bold } /* Operator.highlight.github .Word */
+.highlight.github .w { color: #bbbbbb } /* Text.highlight.github .Whitespace */
+.highlight.github .mf { color: #009999 } /* Literal.highlight.github .Number.highlight.github .Float */
+.highlight.github .mh { color: #009999 } /* Literal.highlight.github .Number.highlight.github .Hex */
+.highlight.github .mi { color: #009999 } /* Literal.highlight.github .Number.highlight.github .Integer */
+.highlight.github .mo { color: #009999 } /* Literal.highlight.github .Number.highlight.github .Oct */
+.highlight.github .sb { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Backtick */
+.highlight.github .sc { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Char */
+.highlight.github .sd { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Doc */
+.highlight.github .s2 { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Double */
+.highlight.github .se { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Escape */
+.highlight.github .sh { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Heredoc */
+.highlight.github .si { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Interpol */
+.highlight.github .sx { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Other */
+.highlight.github .sr { color: #009926 } /* Literal.highlight.github .String.highlight.github .Regex */
+.highlight.github .s1 { color: #d01040 } /* Literal.highlight.github .String.highlight.github .Single */
+.highlight.github .ss { color: #990073 } /* Literal.highlight.github .String.highlight.github .Symbol */
+.highlight.github .bp { color: #999999 } /* Name.highlight.github .Builtin.highlight.github .Pseudo */
+.highlight.github .vc { color: #008080 } /* Name.highlight.github .Variable.highlight.github .Class */
+.highlight.github .vg { color: #008080 } /* Name.highlight.github .Variable.highlight.github .Global */
+.highlight.github .vi { color: #008080 } /* Name.highlight.github .Variable.highlight.github .Instance */
+.highlight.github .il { color: #009999 } /* Literal.highlight.github .Number.highlight.github .Integer.highlight.github .Long */

@@ -2,5 +2,4 @@
   = f.input :title, as: :text, input_html: { rows: 2 }, required: false
   = f.input :description, required: false
   = f.input :smelly_body, label: 'Smelly code', required: false
-  = f.input :language_id, collection: @languages, label_method: :name, value_method: :id, label: 'Programming language', required: false, include_blank: false
-  = f.button :submit, class: 'btn btn-primary btn-block'
+  = f.input :lexer_id, collection: @lexers, label_method: :name, value_method: :id, label: 'Programming language', required: false, include_blank: false
