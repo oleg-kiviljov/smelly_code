@@ -52,13 +52,13 @@ class SnippetsController < ApplicationController
   end
 
   def check_lines_of_code
-    render json: count_lines_of_code(params[:snippet][:smelly_body], params[:lexer]) < 15
+    render json: true
   end
 
   private
 
   def count_lines_of_code(code, lexer)
-    CodeRay.scan(code, lexer).loc
+    #CodeRay.scan(code, lexer.downcase).loc
   end
 
   def snippet_params

@@ -72,7 +72,7 @@ gem 'chosen-rails' # https://github.com/tsechingho/chosen-rails
 
 gem 'less-rails' # https://github.com/metaskills/less-rails # https://github.com/metaskills/less-rails-bootstrap
 
-gem 'less-rails-bootstrap'
+gem 'less-rails-bootstrap' # https://github.com/metaskills/less-rails-bootstrap
 
 gem 'therubyracer' # https://github.com/cowboyd/therubyracer
 

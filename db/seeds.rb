@@ -14,8 +14,6 @@ Perl
 D
 Delphi
 Scala
-ActionScript
-ColdFusion
 Lua
 Pascal
 Haskell
