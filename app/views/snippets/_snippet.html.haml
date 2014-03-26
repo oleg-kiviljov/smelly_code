@@ -1,5 +1,4 @@
-- decorated_snippet = snippet.decorate
-%div{class: "snippet #{snippet.lexer.name}"}
+%div{class: "snippet"}
   .row
     .col-sm-12
       %h4.clearfix
@@ -9,7 +8,7 @@
           = "(#{time_ago_in_words(snippet.created_at)} ago) in"
           = link_to "#{snippet.lexer.name}", snippets_path(page: 1, lexer: snippet.lexer.name)
         %span.pull-right
-          = decorated_snippet.status_label
+          = snippet.decorate.status_label
       %h3
         = link_to snippet.title, snippet_path(snippet)
   .row
@@ -25,15 +24,15 @@
             %i.fa.fa-pencil
       .smelly-code
         .panel
-          %div{class: "panel-heading clickable #{ 'panel-collapsed' if decorated_snippet.resolved?}"}
+          %div{class: "panel-heading clickable #{ 'panel-collapsed' if snippet.decorate.resolved?}"}
             %h3.panel-title.clearfix
               %span.pull-left.text-warning
                 %i.fa.fa-warning
                 Smelly code |
-              = decorated_snippet.panel_heading_icon
+              = snippet.decorate.panel_heading_icon
           .panel-body
-            = decorated_snippet.format_code(user_preferences)
-    - if decorated_snippet.resolved?
+            = snippet.decorate.format_code(snippet.smelly_body)
+    - if snippet.decorate.resolved?
       .col-sm-12
         .clean-code
           .panel
@@ -42,9 +41,9 @@
                 %span.pull-left.text-success
                   %i.fa.fa-check
                   Clean code
-                = decorated_snippet.panel_heading_icon
+                = snippet.decorate.panel_heading_icon
             .panel-body
-              = decorated_snippet.format_code(user_preferences)
+              = snippet.decorate.format_code(snippet.clean_body)
 
 
 :javascript
