@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
 
   has_settings do |s|
-    s.key :highlight, defaults:{ style: 'github', linenos: 'inline' }
-    s.key :snippet, defaults: { expand: true }
+    s.key :snippets, defaults:{ theme: 'github', line_numbers: 'inline', expand: true }
   end
 
   devise :database_authenticatable, :registerable, :recoverable,  :trackable, :validatable
@@ -18,10 +17,11 @@ class User < ActiveRecord::Base
 
   def self.user_exists?(login)
     # username and email are unique attributes
-    where("username = ? or email = ?", login.downcase, login.downcase).present?
+    where("username = ? OR email = ?", login.downcase, login.downcase).present?
   end
 
   def self.find(input)
+    # Override find for username-slug
     input.to_i == 0 ? find_by(username: input) : super
   end
 

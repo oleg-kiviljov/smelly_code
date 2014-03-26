@@ -1,14 +1,16 @@
 class SnippetDecorator < Draper::Decorator
   delegate_all
 
-  def highlight_code(user)
-    style = user.settings(:highlight).style
-    linenos = user.settings(:highlight).linenos
-    Pygments.highlight(object.smelly_body, lexer: object.lexer.name.downcase, options: {linenos: linenos, cssclass: "highlight #{style}"})
+  def highlight_code(user_preferences)
+    options = {
+        linenos: user_preferences[:line_numbers],
+        cssclass: "highlight #{user_preferences[:theme]}"
+    }
+    Pygments.highlight(object.smelly_body, lexer: object.lexer.name.downcase, options: options)
   end
 
-  def format_code(user)
-    h.simple_format(highlight_code(user)).html_safe
+  def format_code(user_preferences)
+    h.simple_format(highlight_code(user_preferences)).html_safe
   end
 
   def status_label

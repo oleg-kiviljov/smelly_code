@@ -32,7 +32,7 @@
                 Smelly code |
               = decorated_snippet.panel_heading_icon
           .panel-body
-            = decorated_snippet.format_code(current_user)
+            = decorated_snippet.format_code(user_preferences)
     - if decorated_snippet.resolved?
       .col-sm-12
         .clean-code
@@ -44,7 +44,7 @@
                   Clean code
                 = decorated_snippet.panel_heading_icon
             .panel-body
-              = decorated_snippet.format_code(current_user)
+              = decorated_snippet.format_code(user_preferences)
 
 
 :javascript

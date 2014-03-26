@@ -18,6 +18,7 @@
 //= require jquery-validation/jquery.validate.min
 //= require jquery-timeago/jquery.timeago
 //= require chosen-jquery
+//= require bootstrap-switch/bootstrap-switch
 //= require_tree .
 //= require_self
 
