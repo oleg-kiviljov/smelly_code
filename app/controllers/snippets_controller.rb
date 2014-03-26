@@ -44,10 +44,8 @@ class SnippetsController < ApplicationController
     end
   end
 
-  def highlight_code
-    style = current_user.settings(:highlight).style
-    linenos = current_user.settings(:highlight).linenos
-    highlighted_code = Pygments.highlight(params[:smelly_code], lexer: params[:lexer].downcase, options: {linenos: linenos, cssclass: "highlight #{style}"})
+  def highlight_code_remote
+    highlighted_code = highlight_code(params[:smelly_code], params[:lexer])
     render json: { highlighted_code: highlighted_code }
   end
 

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       {
           theme: user.settings(:snippets).theme,
           line_numbers: user.settings(:snippets).line_numbers,
-          expand: user.settings(:snippets).expand
+          minimize: user.settings(:snippets).minimize
 
       }
   end

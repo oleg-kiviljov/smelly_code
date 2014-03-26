@@ -25,6 +25,7 @@
 $(document).on("ready page:load", function(){
   autohide_alerts();
   initialize_chosen();
+  initialize_bootstrap_switch();
 });
 
 function initialize_timeago(){
@@ -33,9 +34,13 @@ function initialize_timeago(){
 
 function initialize_chosen(){
   $('.chosen-select').chosen({
-    no_results_text: 'Nothing to show',
+    no_results_text: "Can't find anything like",
     width: '100%'
   })
+}
+
+function initialize_bootstrap_switch(){
+  $('.switch').bootstrapSwitch();
 }
 
 function autohide_alerts() {

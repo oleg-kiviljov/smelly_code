@@ -16,6 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
+    @options_for_snippet_example = options_for_snippet_example
   end
 
   def update
@@ -39,6 +40,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def options_for_snippet_example
+    smelly_code_example = "def create
+    @snippet = current_user.snippets.build(snippet_params)
+    if @snippet.save
+      flash[:success] = 'Snippet created successfully.'
+      redirect_to snippets_path
+    else
+      flash[:error] = \"Couldn't create snippet.\"
+      redirect_to new_snippet_path
+    end
+  end"
+    { action: 'Do nothing',
+      snippet: Snippet.new,
+      lexer: 'Ruby',
+      smelly_code: smelly_code_example,
+      title: 'Example snippet with smelly code'
+    }
   end
 
 end

@@ -7,7 +7,7 @@
         %i.fa.fa-edit
     = render 'snippets/form'
   .col-sm-8
-    = render 'snippets/result', action: 'update snippet'
+    = render 'snippets/result', action: 'update snippet', snippet: @snippet
 
 :javascript
   $(document).on("ready page:load", function(){

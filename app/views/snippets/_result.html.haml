@@ -7,13 +7,15 @@
           = link_to current_user.username, '#'
           %span#header
             %span.timeago
-              = (@snippet.created_at) ? "(#{time_ago_in_words(@snippet.created_at)} ago)"  : '(less than a minute ago)'
+              = (snippet.created_at) ? "(#{time_ago_in_words(snippet.created_at)} ago)"  : '(less than a minute ago)'
             in
+            = link_to lexer, '#' if defined?(lexer)
             %a#lexer_id{href: '#'}
         %span.pull-right
           %span.label.label-danger unresolved
         %h3.title-container
           %a#title{href: '#'}
+            = title if defined?(title)
   .row
     .col-sm-12
       %p.description#description
@@ -30,5 +32,6 @@
                 %i.fa.fa-minus
           .panel-body
             %span#smelly_body
+              = simple_format(highlight_code(smelly_code, lexer)) if defined?(smelly_code)
     %button.btn.btn-primary.btn-block#create-snippet
       = action

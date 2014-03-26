@@ -1,17 +1,15 @@
 class User < ActiveRecord::Base
 
   has_settings do |s|
-    s.key :snippets, defaults:{ theme: 'github', line_numbers: 'inline', expand: true }
+    s.key :snippets, defaults:{ theme: 'github', line_numbers: 'inline', minimize: false }
   end
 
-  devise :database_authenticatable, :registerable, :recoverable,  :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable,  :trackable
 
   validates :username, :email, presence: true
   validates :username, length: {minimum: 4, maximum: 20}
   validates :username, :email, uniqueness: { case_sensitive: false }
-  validates_format_of :email, with: email_regexp
   validates :password, length: { minimum: 8 }
-  validates_confirmation_of :password
 
   has_many :snippets
 

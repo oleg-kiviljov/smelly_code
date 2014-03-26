@@ -1,2 +1,32 @@
-%h1 Customization
-%hr.small
+.page-header
+  %h1.clearfix
+    %span.pull-left
+      Manage preferences
+    %span.pull-right
+      %i.fa.fa-gear
+.row
+  .col-sm-4.well#snippet-settings
+    %legend.clearfix
+      %span.pull-left
+        Customize snippets
+      %span.pull-right
+        %i.fa.fa-code
+    .form-group
+      %label Theme for syntax highlighting
+      = select_tag(:theme, options_for_select(fetch_themes), class: 'chosen-select', include_blank: true)
+    .form-group
+      %label Minimized code panels
+      %br
+      = check_box_tag(:minimize, nil, false, class: 'switch', data: {'on-color' => "success"})
+    .form-group
+      %label Line numbers
+      %br
+      = check_box_tag(:line_numbers, nil, true, class: 'switch', data: {'on-color' => "success"})
+  .col-sm-8
+    = render 'snippets/result', @options_for_snippet_example
+
+:javascript
+  $(document).on("ready page:load", function(){
+     //var smelly_code = $("#smelly_body").text
+     //highlight_smelly_code(smelly_code, "ruby")
+  })

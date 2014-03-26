@@ -7,7 +7,7 @@ SmellyCode::Application.routes.draw do
   # Resourceful routes
 
   resources :snippets, except: [:destroy] do
-    post 'highlight_code' => 'snippets#highlight_code', on: :collection
+    post 'highlight_code' => 'snippets#highlight_code_remote', on: :collection
     post 'check_lines_of_code' => 'snippets#check_lines_of_code', on: :collection
   end
   resources :users, only: [:show]
