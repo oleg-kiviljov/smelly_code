@@ -20,7 +20,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    super
+    value = params[:value].downcase
+    if params[:value] == "false"
+      value = false
+    elsif params[:value] == "true"
+      value = true
+    end
+    current_user.settings(:snippets).update_attributes! params[:preference] => value
+    head :ok
   end
 
   def destroy
@@ -57,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       snippet: Snippet.new,
       lexer: 'Ruby',
       smelly_code: smelly_code_example,
-      title: 'Example snippet with smelly code'
+      title: 'Example snippet'
     }
   end
 

@@ -32,6 +32,6 @@
                 %i.fa.fa-minus
           .panel-body
             %span#smelly_body
-              = simple_format(highlight_code(smelly_code, lexer)) if defined?(smelly_code)
+              = highlight_code(smelly_code, lexer) if defined?(smelly_code)
     %button.btn.btn-primary.btn-block#create-snippet
       = action

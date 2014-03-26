@@ -2,7 +2,7 @@ class SnippetDecorator < Draper::Decorator
   delegate_all
 
   def format_code(code)
-    h.simple_format(h.highlight_code(code, object.lexer.name)).html_safe
+    h.highlight_code(code, object.lexer.name).html_safe
   end
 
   def status_label

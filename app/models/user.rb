@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_settings do |s|
-    s.key :snippets, defaults:{ theme: 'github', line_numbers: 'inline', minimize: false }
+    s.key :snippets, defaults:{ theme: 'github', line_numbers: true, minimize: false }
   end
 
   devise :database_authenticatable, :registerable, :recoverable,  :trackable
@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :username, :email, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8 }
 
-  has_many :snippets
+  has_many :snippets, dependent: :destroy
 
   def self.user_exists?(login)
     # username and email are unique attributes

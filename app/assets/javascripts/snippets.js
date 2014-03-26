@@ -4,7 +4,7 @@ function highlight_smelly_code(smelly_code, lexer){
     url: '/snippets/highlight_code',
     data: { smelly_code: smelly_code, lexer: lexer }
   }).success(function(data){
-        $("#smelly_body").html(data.highlighted_code);
+        $("#smelly_body").empty().html(data.highlighted_code);
       })
 }
 

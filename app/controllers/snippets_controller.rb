@@ -45,7 +45,7 @@ class SnippetsController < ApplicationController
   end
 
   def highlight_code_remote
-    highlighted_code = highlight_code(params[:smelly_code], params[:lexer])
+    highlighted_code = view_context.highlight_code(params[:smelly_code], params[:lexer])
     render json: { highlighted_code: highlighted_code }
   end
 
