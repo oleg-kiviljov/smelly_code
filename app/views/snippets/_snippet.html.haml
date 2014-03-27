@@ -28,7 +28,7 @@
               %span.pull-left.text-warning
                 %i.fa.fa-warning
                 Smelly code |
-              = snippet.decorate.panel_heading_icon
+              = snippet.decorate.panel_heading_icon(user_preferences)
           .panel-body
             = snippet.decorate.format_code(snippet.smelly_body)
     - if snippet.decorate.resolved?
@@ -40,7 +40,7 @@
                 %span.pull-left.text-success
                   %i.fa.fa-check
                   Clean code
-                = snippet.decorate.panel_heading_icon
+                = snippet.decorate.panel_heading_icon(user_preferences)
             .panel-body
               = snippet.decorate.format_code(snippet.clean_body)
 

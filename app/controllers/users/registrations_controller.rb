@@ -60,11 +60,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to new_snippet_path
     end
   end"
-    { action: 'Do nothing',
+    {
       snippet: Snippet.new,
       lexer: 'Ruby',
       smelly_code: smelly_code_example,
-      title: 'Example snippet to test preferences'
+      title: 'Example code from create action'
     }
   end
 

@@ -31,5 +31,7 @@
           .panel-body
             %span#smelly_body
               = highlight_code(smelly_code, lexer) if defined?(smelly_code)
-    %button.btn.btn-primary.btn-block#create-snippet
-      = action
+    - if defined?(action)
+      %button.btn.btn-primary.btn-block#create-snippet
+        = action
+    = render 'snippets/separator'

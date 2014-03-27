@@ -16,7 +16,7 @@
     .form-group
       %label Minimized code panels
       = check_box_tag(:minimize, nil, user_preferences[:minimize], class: 'switch', data: {'on-color' => "success"})
-  .col-sm-1
+  .col-sm-1.hidden-xs
 
   .col-sm-8
     = render 'snippets/result', @options_for_snippet_example

@@ -6,7 +6,7 @@ class SnippetDecorator < Draper::Decorator
   end
 
   def status_label
-    classes = %w{ label }
+    classes = %w{ label hidden-xs }
     if resolved?
       label = 'clean :)'
       classes.push('label-success')
@@ -19,9 +19,9 @@ class SnippetDecorator < Draper::Decorator
     end
   end
 
-  def panel_heading_icon
+  def panel_heading_icon(user_preferences)
     classes = %w{ fa pull-right }
-    if resolved?
+    if user_preferences[:minimize]
       classes.push('fa-plus')
     else
       classes.push('fa-minus')
