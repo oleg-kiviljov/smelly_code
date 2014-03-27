@@ -1,18 +1,16 @@
 .snippet.result
   .row
     .col-sm-12
-      %h4.clearfix
+      %h4.clearfix.page-header
         %span.pull-left
           %i.fa.fa-user
           = link_to current_user.username, '#'
           %span#header
-            %span.timeago
-              = (snippet.created_at) ? "(#{time_ago_in_words(snippet.created_at)} ago)"  : '(less than a minute ago)'
+            = (snippet.created_at) ? "(#{time_ago_in_words(snippet.created_at)} ago)"  : '(less than a minute ago)'
             in
             = link_to lexer, '#' if defined?(lexer)
             %a#lexer_id{href: '#'}
-        %span.pull-right
-          %span.label.label-danger unresolved
+          %span.label.label-danger smelly :(
         %h3.title-container
           %a#title{href: '#'}
             = title if defined?(title)
@@ -23,7 +21,7 @@
     .col-sm-12
       .smelly-code
         .panel
-          %div{class: "panel-heading clickable"}
+          %div{class: "panel-heading clickable #{ 'panel-collapsed' if user_preferences[:minimize]}"}
             %h3.panel-title.clearfix
               %span.pull-left.text-warning
                 %i.fa.fa-warning

@@ -1,12 +1,8 @@
 module Users::RegistrationsHelper
 
   def fetch_themes
-    themes = Pygments.styles
-    unwanted_themes = %w{ bw rrt borland default }
-    additional_themes = %w{ github zenburn }
-    # Remove unwanted themes and add additional themes
-    themes = (themes - unwanted_themes) + additional_themes
-    themes.sort! {|a, z| a <=> z }
+    themes = Dir.glob('vendor/assets/stylesheets/pygments/*')
+    themes.map! { |stylesheet| stylesheet.split('/')[4].gsub('.css', '') }
     themes.map! {|theme| theme.capitalize }
   end
 

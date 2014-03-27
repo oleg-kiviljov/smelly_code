@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find(input)
-    # Override find for username-slug
+    # Override find for username slug
     input.to_i == 0 ? find_by(username: input) : super
   end
 

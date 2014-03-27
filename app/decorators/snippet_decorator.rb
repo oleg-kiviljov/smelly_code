@@ -8,10 +8,10 @@ class SnippetDecorator < Draper::Decorator
   def status_label
     classes = %w{ label }
     if resolved?
-      label = 'resolved'
+      label = 'clean :)'
       classes.push('label-success')
     else
-      label = 'unresolved'
+      label = 'smelly :('
       classes.push('label-danger')
     end
     h.content_tag(:span, class: classes.join(' ')) do

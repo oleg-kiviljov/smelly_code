@@ -1,3 +1,5 @@
+.highlight.fruity pre { background-color: #3f3f3f }
+.highlight.fruity .lineno { color: white }
 .highlight.fruity .hll { background-color: #333333 }
 .highlight.fruity .c { color: #008800; font-style: italic; background-color: #0f140f } /* Comment */
 .highlight.fruity .err { color: #ffffff } /* Error */

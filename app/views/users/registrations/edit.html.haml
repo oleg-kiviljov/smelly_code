@@ -1,16 +1,12 @@
 .page-header
-  %h1.clearfix
-    %span.pull-left
-      Manage preferences
-    %span.pull-right
-      %i.fa.fa-gear
+  %h1 Manage your preferences
 .row
-  .col-sm-4.well#snippet-settings
+  .col-sm-3.well#snippet-settings
     %legend.clearfix
       %span.pull-left
         Customize snippets
       %span.pull-right
-        %i.fa.fa-code
+        %i.fa.fa-gear
     .form-group
       %label Theme for syntax highlighting
       = select_tag(:theme, options_for_select(fetch_themes, user_preferences[:theme].capitalize), class: 'chosen-select', include_blank: true)
@@ -20,33 +16,37 @@
     .form-group
       %label Minimized code panels
       = check_box_tag(:minimize, nil, user_preferences[:minimize], class: 'switch', data: {'on-color' => "success"})
+  .col-sm-1
 
   .col-sm-8
     = render 'snippets/result', @options_for_snippet_example
     = text_area_tag(:hidden_smelly_body, @options_for_snippet_example[:smelly_code], class: 'hide')
 
 :javascript
-  $(document).on("ready page:load", function(){
-     $("#theme").on("change", function(){
-          var preference = 'theme'
-          var value = $(this).children("option:selected").text()
-          set_user_preference(preference, value)
-          var smelly_code = $("#hidden_smelly_body").val()
-          var lexer = "ruby";
-          highlight_smelly_code(smelly_code, lexer)
-       });
+   $("#minimize").on("switchChange.bootstrapSwitch", function(event,  state){
+            var preference = 'minimize';
+            var value = state;
+            set_user_preference(preference, value, function(){
+               $('.smelly-code .clickable').trigger("click")
+            })
+         })
 
-       $("#minimize").on("switchChange.bootstrapSwitch", function(e ,data){
-          var preference = 'minimize'
-          var value = $('#minimize').bootstrapSwitch('state')
-          set_user_preference(preference, value)
-          $('.smelly-code .clickable').trigger("click")
-       })
+         $("#line_numbers").on("switchChange.bootstrapSwitch", function(event, state){
+            var preference = 'line_numbers';
+            var value = state;
+            var smelly_code = $("#hidden_smelly_body").val();
+            var lexer = "ruby";
+            set_user_preference(preference, value, function(){
+              highlight_smelly_code(smelly_code, lexer);
+            })
+         })
 
-       $("#line_numbers").on("switchChange.bootstrapSwitch", function(event, state){
-          var preference = 'line_numbers'
-          value = state
-          set_user_preference(preference, value)
-       })
-
-  })
+         $("#theme").on("change", function(){
+                   var preference = 'theme';
+                   var value = $(this).children("option:selected").text();
+                   var smelly_code = $("#hidden_smelly_body").val();
+                   var lexer = "ruby";
+                   set_user_preference(preference, value, function(){
+                      highlight_smelly_code(smelly_code, lexer);
+                   })
+                });

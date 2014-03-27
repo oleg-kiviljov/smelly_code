@@ -1,13 +1,12 @@
 %div{class: "snippet"}
   .row
     .col-sm-12
-      %h4.clearfix
+      %h4.clearfix.page-header
         %span.pull-left
           %i.fa.fa-user
           = link_to snippet.user.username, user_path(snippet.user)
           = "(#{time_ago_in_words(snippet.created_at)} ago) in"
           = link_to "#{snippet.lexer.name}", snippets_path(page: 1, lexer: snippet.lexer.name)
-        %span.pull-right
           = snippet.decorate.status_label
       %h3
         = link_to snippet.title, snippet_path(snippet)
@@ -24,7 +23,7 @@
             %i.fa.fa-pencil
       .smelly-code
         .panel
-          %div{class: "panel-heading clickable #{ 'panel-collapsed' if snippet.decorate.resolved?}"}
+          %div{class: "panel-heading clickable #{ 'panel-collapsed' if user_preferences[:minimize]}"}
             %h3.panel-title.clearfix
               %span.pull-left.text-warning
                 %i.fa.fa-warning
@@ -36,7 +35,7 @@
       .col-sm-12
         .clean-code
           .panel
-            .panel-heading.clickable.panel-collapsed
+            %div{class: "panel-heading clickable #{ 'panel-collapsed' if user_preferences[:minimize]}"}
               %h3.panel-title.clearfix
                 %span.pull-left.text-success
                   %i.fa.fa-check

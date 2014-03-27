@@ -1,3 +1,5 @@
+.highlight.vim pre { background-color: #3f3f3f }
+.highlight.vim .lineno { color: white }
 .highlight.vim .hll { background-color: #222222 }
 .highlight.vim .c { color: #000080 } /* Comment */
 .highlight.vim .err { color: #cccccc; border: 1px solid #FF0000 } /* Error */

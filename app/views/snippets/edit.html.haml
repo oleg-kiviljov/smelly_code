@@ -1,11 +1,15 @@
+.page-header
+  %h1 Correct everything you need
 .row
-  .col-sm-4.well#snippet-form
+  .col-sm-3.well#snippet-form
     %legend.clearfix
       %span.pull-left
         Edit snippet
       %span.pull-right
         %i.fa.fa-edit
     = render 'snippets/form'
+  .col-sm-1
+
   .col-sm-8
     = render 'snippets/result', action: 'update snippet', snippet: @snippet
 

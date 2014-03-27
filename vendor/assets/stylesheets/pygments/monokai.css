@@ -1,3 +1,5 @@
+.highlight.monokai pre { background-color: #3f3f3f }
+.highlight.monokai .lineno { color: white }
 .highlight.monokai .hll { background-color: #49483e }
 .highlight.monokai .c { color: #75715e } /* Comment */
 .highlight.monokai .err { color: #960050; background-color: #1e0010 } /* Error */

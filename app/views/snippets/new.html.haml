@@ -1,11 +1,15 @@
+.page-header
+  %h1 Show the code that needs to be cleaned
 .row
-  .col-sm-4.well#snippet-form
+  .col-sm-3.well#snippet-form
     %legend.clearfix
       %span.pull-left
         New snippet
       %span.pull-right
         %i.fa.fa-code
     = render 'snippets/form'
+  .col-sm-1
+
   .col-sm-8
     = render 'snippets/result', action: 'create snippet', snippet: @snippet
 
