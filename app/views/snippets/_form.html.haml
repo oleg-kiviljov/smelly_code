@@ -3,6 +3,7 @@
   = f.input :description, required: false
   = f.input :smelly_body, label: 'Smelly code', required: false
   = f.input :lexer_id, collection: @lexers, label_method: :name, value_method: :id, label: 'Programming language', required: false, include_blank: false, input_html: {class: 'chosen-select'}
+  = f.button :submit, class: 'btn btn-primary btn-block'
 
 :javascript
   $(document).on("ready page:load", function(){
@@ -34,7 +35,7 @@
 
   // Sign up form validation
 
-    var snippet_form = $("#snippet-form form").validate({
+    $("#snippet-form form").validate({
       rules: {
         "snippet[title]": {
           required: true,
@@ -81,10 +82,5 @@
         $(element).next('span.label-danger').append(label)
       }
     });
-
-    $("#create-snippet").click(function(){
-      snippet_form.form();
-      if(snippet_form.valid()) { $("#snippet-form form").submit() }
-    })
 
   });

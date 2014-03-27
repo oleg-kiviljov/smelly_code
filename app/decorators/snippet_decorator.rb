@@ -29,18 +29,6 @@ class SnippetDecorator < Draper::Decorator
     h.content_tag(:i, nil, class: classes.join(' '))
   end
 
-  def button
-    classes = %w{btn btn-lg btn-block}
-    if resolved?
-      title = 'view snippet'
-      classes.push('btn-primary')
-    else
-      title = 'submit solution'
-      classes.push('btn-success')
-    end
-    h.link_to title, h.snippet_path(snippet), class: classes.join(' ')
-  end
-
   def resolved?
     object.clean_body.present?
   end
