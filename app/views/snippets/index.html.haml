@@ -2,5 +2,5 @@
   .col-sm-8
     = render partial: @snippets, spacer_template: 'separator'
   .col-sm-4
-    ' Filters!'
+    = render 'partials/filters'
 = render 'partials/pagination', resources: @snippets

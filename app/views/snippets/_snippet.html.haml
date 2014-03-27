@@ -7,6 +7,8 @@
           = link_to snippet.user.username, user_path(snippet.user)
           = "(#{time_ago_in_words(snippet.created_at)} ago) in"
           = link_to "#{snippet.lexer.name}", snippets_path(page: 1, lexer: snippet.lexer.name)
+        %span.pull-right.hidden-xs.hidden-sm
+          status:
           = snippet.decorate.status_label
       %h3
         = link_to snippet.title, snippet_path(snippet)
@@ -17,6 +19,9 @@
   .row
     .col-sm-12
       %p.clearfix
+        %span.pull-left.visible-xs.visible-sm
+          status:
+          = snippet.decorate.status_label
         %span.pull-right
           = link_to edit_snippet_path(snippet), class: 'action-link' do
             Edit this snippet

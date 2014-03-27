@@ -10,13 +10,21 @@
             in
             = link_to lexer, '#' if defined?(lexer)
             %a#lexer_id{href: '#'}
-            = snippet.decorate.status_label
+        %span.pull-right.hidden-xs.hidden-sm
+          status:
+          = snippet.decorate.status_label
         %h3.title-container
           %a#title{href: '#'}
             = title if defined?(title)
   .row
     .col-sm-12
       %p.description#description
+  .row
+    .col-sm-12
+      %p.clearfix
+        %span.pull-left.visible-xs.visible-sm
+          status:
+          = snippet.decorate.status_label
   .row
     .col-sm-12
       .smelly-code
