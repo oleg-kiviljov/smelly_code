@@ -10,7 +10,8 @@ module ApplicationHelper
 
     options = {
         linenos: line_numbers,
-        cssclass: "highlight #{user_preferences[:theme]}"
+        cssclass: "highlight #{user_preferences[:theme]}",
+        lineseparator: '<br>'
     }
     simple_format(Pygments.highlight(code, lexer: lexer.downcase, options: options)).html_safe
   end

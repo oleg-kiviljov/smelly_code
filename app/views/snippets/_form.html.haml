@@ -26,12 +26,15 @@
      highlight_smelly_code(smelly_code, lexer)
   });
 
-  $("#snippet_smelly_body").on("blur", function(){
+  $("#snippet_smelly_body").on("keyup", function(){
     var smelly_code = $(this).val();
     var lexer = $("#snippet_lexer_id").children("option:selected").text();
-    highlight_smelly_code(smelly_code, lexer)
-  });
 
+    delay(500)(function(){
+      highlight_smelly_code(smelly_code, lexer)
+    })
+
+  })
 
   // Sign up form validation
 

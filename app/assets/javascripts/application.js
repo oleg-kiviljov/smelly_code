@@ -64,4 +64,13 @@ function scroll_to_element(selector, time, verticalOffset) {
   }, time);
 }
 
+function delay(ms) {
+  var timer = 0;
+  return function(callback){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  }
+}
+
+
 
