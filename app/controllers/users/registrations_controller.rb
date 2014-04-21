@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       snippet: Snippet.new,
       lexer: 'Ruby',
       smelly_code: smelly_code_example,
-      title: 'Example code from create action'
+      title: 'Example code'
     }
   end
 

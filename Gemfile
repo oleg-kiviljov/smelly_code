@@ -76,6 +76,8 @@ gem 'less-rails-bootstrap' # https://github.com/metaskills/less-rails-bootstrap
 
 gem 'therubyracer' # https://github.com/cowboyd/therubyracer
 
+gem "messengerjs-rails", "~> 1.4.1" # https://github.com/benjis/messengerjs-rails
+
 
 
 

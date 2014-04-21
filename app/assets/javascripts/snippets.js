@@ -8,6 +8,11 @@ function highlight_smelly_code(smelly_code, lexer){
       })
 }
 
+function apply_filters(){
+  var filters = $("#filters select").serialize();
+  window.location.href = "/snippets?"+filters
+}
+
 function insert_text($input, $selector){
   var tag = $input.prop("tagName");
   if(tag == 'SELECT'){
@@ -29,3 +34,4 @@ function load_result_snippet(){
   $("#description").text(description);
   $("#smelly_body").html(highlighted_smelly_code);
 }
+

@@ -19,6 +19,8 @@
 //= require jquery-timeago/jquery.timeago
 //= require chosen-jquery
 //= require bootstrap-switch/bootstrap-switch
+//= require messenger
+//= require highlight/highlight.pack
 //= require_tree .
 //= require_self
 
@@ -26,27 +28,15 @@ $(document).on("ready page:load", function(){
   autohide_alerts();
   initialize_chosen();
   initialize_bootstrap_switch();
+  initialize_messenger();
+  initialize_highlight();
 });
 
-function initialize_timeago(){
-  $('.time-ago').timeago();
-}
-
-function initialize_chosen(){
-  $('.chosen-select').chosen({
-    no_results_text: "Can't find anything like",
-    width: '100%'
+function show_message(message, type){
+  Messenger().post({
+    message: message,
+    type: type
   })
-}
-
-function initialize_bootstrap_switch(){
-  $('.switch').bootstrapSwitch();
-}
-
-function autohide_alerts() {
-  setTimeout(function(){
-    $(".alert").slideUp(300)
-  }, 5000);
 }
 
 function fetch_resource_id(){
@@ -64,12 +54,45 @@ function scroll_to_element(selector, time, verticalOffset) {
   }, time);
 }
 
+
 function delay(ms) {
   var timer = 0;
   return function(callback){
     clearTimeout (timer);
     timer = setTimeout(callback, ms);
   }
+}
+
+function initialize_highlight(){
+}
+
+function initialize_messenger(){
+  Messenger({
+    theme: 'flat'
+  });
+}
+
+function initialize_timeago(){
+  $('.time-ago').timeago();
+}
+
+function initialize_chosen(){
+  $('.chosen-select').chosen({
+    no_results_text: "Can't find anything like",
+    width: '100%',
+    disable_search_threshold: 10,
+    allow_single_deselect: true
+  })
+}
+
+function initialize_bootstrap_switch(){
+  $('.switch').bootstrapSwitch();
+}
+
+function autohide_alerts() {
+  setTimeout(function(){
+    $(".alert").slideUp(300)
+  }, 5000);
 }
 
 

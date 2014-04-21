@@ -36,6 +36,7 @@
               = snippet.decorate.panel_heading_icon(user_preferences)
           .panel-body
             = snippet.decorate.format_code(snippet.smelly_body)
+
     - if snippet.decorate.resolved?
       .col-sm-12
         .clean-code
@@ -49,13 +50,6 @@
             .panel-body
               = snippet.decorate.format_code(snippet.clean_body)
 
-
-:javascript
-  $(document).on("ready page:load", function(){
-    // Remove wrong paragraph that simple_format creates
-    $('.snippet .panel-body p:first-child').remove();
-    $('.highlight').next('p').remove();
-  })
 
 
 

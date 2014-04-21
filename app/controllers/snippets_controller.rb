@@ -4,8 +4,14 @@ class SnippetsController < ApplicationController
 
   def index
     snippet_collection = Snippet.all.includes(:lexer)
-    snippet_collection = Lexer.find_by(name: params[:lexer]).snippets if params[:lexer]
+    if params[:filters]
+      snippet_collection = apply_filters(params[:filters], snippet_collection)
+    elsif params[:lexer]
+      snippet_collection = Lexer.find_by(name: params[:lexer]).snippets
+    end
+    @lexers = Lexer.all
     @snippets = snippet_collection.page(params[:page])
+    flash.now[:danger] = 'Cannot find any snippets.' if @snippets.blank?
   end
 
   def show
@@ -61,6 +67,14 @@ class SnippetsController < ApplicationController
 
   def snippet_params
     params.require(:snippet).permit(:title, :description, :smelly_body, :lexer_id)
+  end
+
+  def apply_filters(filters, snippets)
+    filters.each do |filter|
+      next if filter[1].blank?
+      snippets = snippets.public_send(filter[0], filter[1])
+    end
+    snippets
   end
 
 end

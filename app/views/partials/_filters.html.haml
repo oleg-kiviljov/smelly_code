@@ -1,5 +1,28 @@
-.filters.well
+#filters.well
   %legend.clearfix
-    %span.pull-left Apply filters
+    %span.pull-left Filter snippets
     %span.pull-right
       %i.fa.fa-filter
+  .form-group
+    %label Status
+    = select_tag '[filters][status]', options_for_select(select_status, (params[:filters]) ? params[:filters][:status] : nil), class: 'chosen-select'
+  .form-group
+    %label Programming languages
+    = select_tag '[filters][lexers]', options_from_collection_for_select(@lexers, 'id', 'name', (params[:filters]) ? params[:filters][:lexers] : nil), class: 'chosen-select', multiple: true, data:{'placeholder' => 'Nothing selected'}
+  .form-group
+    %label Posted
+    = select_tag '[filters][posted]', options_for_select(select_posted, (params[:filters]) ? params[:filters][:posted] : nil), class: 'chosen-select', data:{'placeholder' => 'Nothing selected'}, include_blank: true
+  %button.btn.btn-primary.btn-block#apply-filters Apply
+  - if params[:filters]
+    %div.text-center
+      %strong OR
+    = link_to 'Remove', root_path, class: 'btn btn-danger btn-block', id: 'remove-filters'
+
+:javascript
+  $(document).on("ready page:load", function(){
+      $("#apply-filters").click(apply_filters);
+  });
+
+
+
+

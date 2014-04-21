@@ -1,5 +1,5 @@
 = simple_form_for(@snippet) do |f|
-  = f.input :title, as: :text, input_html: { rows: 2 }, required: false
+  = f.input :title, required: false
   = f.input :description, required: false
   = f.input :smelly_body, label: 'Smelly code', required: false
   = f.input :lexer_id, collection: @lexers, label_method: :name, value_method: :id, label: 'Programming language', required: false, include_blank: false, input_html: {class: 'chosen-select'}
