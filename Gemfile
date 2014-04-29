@@ -62,8 +62,6 @@ gem 'awesome_print' # https://github.com/michaeldv/awesome_print
 
 gem 'pygments.rb' # https://github.com/tmm1/pygments.rb
 
-gem 'coderay' # https://github.com/rubychan/coderay
-
 gem 'best_in_place' , github: 'bernat/best_in_place', branch: "rails-4" # https://github.com/bernat/best_in_place
 
 gem 'ledermann-rails-settings', :require => 'rails-settings' # https://github.com/ledermann/rails-settings
@@ -77,6 +75,8 @@ gem 'less-rails-bootstrap' # https://github.com/metaskills/less-rails-bootstrap
 gem 'therubyracer' # https://github.com/cowboyd/therubyracer
 
 gem "messengerjs-rails", "~> 1.4.1" # https://github.com/benjis/messengerjs-rails
+
+gem 'paloma' # https://github.com/kbparagua/paloma
 
 
 

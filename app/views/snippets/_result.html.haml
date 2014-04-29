@@ -35,7 +35,7 @@
                 %i.fa.fa-warning
                 Smelly code |
               %span.pull-right
-                %i.fa.fa-minus
+                = snippet.decorate.panel_heading_icon(user_preferences)
           .panel-body
             %span#smelly_body
               = highlight_code(smelly_code, lexer) if defined?(smelly_code)
