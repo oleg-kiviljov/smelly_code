@@ -1,5 +1,5 @@
 ## Project description
-As I was struggling with writing clean and maintainable code, I thought it would be nice to have a website where people could put their small && 'smelly' pieces of code and have someone to help them refactor it. This was also one of my earliest experiments with rails.
+As I was struggling with writing clean and maintainable code, I thought it would be nice to have a website where people could put their small && 'smelly' piece of code and have someone to help them refactor it. This was also one of my earliest experiments with rails.
 
 ## Setup
 1. git clone https://github.com/oleg-kiviljov/smelly_code.git
