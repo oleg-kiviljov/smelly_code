@@ -44,8 +44,6 @@ gem 'whenever' # https://github.com/javan/whenever
 
 gem 'httparty' # https://github.com/jnunemaker/httparty
 
-gem 'mechanize' # http://mechanize.rubyforge.org/Mechanize.html
-
 gem 'lumberjack' # https://github.com/bdurand/lumberjack
 
 gem 'sidekiq' # http://sidekiq.org/
@@ -62,7 +60,7 @@ gem 'awesome_print' # https://github.com/michaeldv/awesome_print
 
 gem 'pygments.rb' # https://github.com/tmm1/pygments.rb
 
-gem 'best_in_place' , github: 'bernat/best_in_place', branch: "rails-4" # https://github.com/bernat/best_in_place
+gem 'best_in_place' # https://github.com/bernat/best_in_place
 
 gem 'ledermann-rails-settings', :require => 'rails-settings' # https://github.com/ledermann/rails-settings
 
