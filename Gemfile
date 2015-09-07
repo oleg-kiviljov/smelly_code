@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -44,12 +44,6 @@ gem 'whenever' # https://github.com/javan/whenever
 
 gem 'httparty' # https://github.com/jnunemaker/httparty
 
-gem 'lumberjack' # https://github.com/bdurand/lumberjack
-
-gem 'sidekiq' # http://sidekiq.org/
-
-gem 'cancan' # https://github.com/ryanb/cancan
-
 gem 'country_select' # https://rubygems.org/gems/country_select
 
 gem 'will_paginate-bootstrap' # https://github.com/bootstrap-ruby/will_paginate-bootstrap
@@ -59,8 +53,6 @@ gem 'draper' # https://github.com/drapergem/draper
 gem 'awesome_print' # https://github.com/michaeldv/awesome_print
 
 gem 'pygments.rb' # https://github.com/tmm1/pygments.rb
-
-gem 'best_in_place' # https://github.com/bernat/best_in_place
 
 gem 'ledermann-rails-settings', :require => 'rails-settings' # https://github.com/ledermann/rails-settings
 
