@@ -3,8 +3,7 @@ As I was struggling with writing clean and maintainable code, I thought it would
 
 ## Setup
 1. git clone https://github.com/oleg-kiviljov/smelly_code.git
-2. rake db:migrate
-3. rake db:seed
+2. rake db:setup
 
 ## Screenshots
 ![screen shot 2015-09-08 at 01 07 55](https://cloud.githubusercontent.com/assets/10065250/9723649/33e6af06-55c6-11e5-8e25-845b21861f6c.png)
